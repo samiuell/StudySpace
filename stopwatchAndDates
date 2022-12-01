@@ -1,0 +1,41 @@
+void displayDate() {
+  int d = day();
+  int m = month();
+  int y = year();
+  
+  textSize(15);
+  textAlign(CENTER);
+  fill(0);
+  text(m+"/"+d+"/"+y, 600, 100);
+}
+
+void displayStopwatch() {  
+  background(255);
+  
+  int h_current = hour();
+  int m_current = minute();
+  int s_current = second();
+  
+  int hElapsed = h_current - h_start;
+  int mElapsed = m_current - m_start;
+  if (mElapsed < 0) {
+    hElapsed -= 1;
+    mElapsed += 60;
+  }
+  int sElapsed = s_current - s_start;
+  if (sElapsed < 0) {
+    mElapsed -= 1;
+    sElapsed += 60;
+  }
+  
+  for (int m:studyBreaks) {
+    if (mElapsed == m && sElapsed == 0) {
+      text("Study Break", width/2, 150);
+    }
+  }
+
+  textSize(30);
+  textAlign(CENTER);
+  fill(0);
+  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 100);
+}
