@@ -6,6 +6,11 @@ class Task {
         this.name = n;
         this.done = false;
     }
+    
+    Task(){
+      this.name = "";
+      this.done = false;
+    }
 
     void complete() {
         this.done = true;
