@@ -11,7 +11,6 @@ SoundFile lofi;
 SoundFile brownNoise; 
 String chosenSong;
 boolean musicPaused = false; 
-
 int h_start, m_start, s_start;
 int h_pause, m_pause, s_pause;
 int h_current, m_current, s_current;
@@ -22,6 +21,7 @@ boolean start = true;
 int hElapsed, mElapsed, sElapsed;
 int hPaused, mPaused, sPaused;
 
+
 //Progress bar
 int pBarLength = 300;
 
@@ -30,6 +30,18 @@ void setup() {
 
     createGUI();
     playMusic.setVisible(false); 
+    taskOne.setVisible(false);
+    taskOneBut.setVisible(false); 
+    taskTwo.setVisible(false); 
+    taskTwoBut.setVisible(false); 
+    taskThree.setVisible(false); 
+    taskThreeBut.setVisible(false); 
+    taskListLabel.setVisible(false);
+    addTaskBut.setVisible(false); 
+    stopwatchBtn.setVisible(false); 
+    
+    
+    
     background(255);
     
     //QUOTE
@@ -38,11 +50,6 @@ void setup() {
     //Adding initial tasks
     for(int i = 0; i < 10; i++){
         tasks.add(null);
-    }
-
-    //Setting study breaks
-    for (int m = studyBreak; m < 60; m += studyBreak) {
-      studyBreaks.add(m);
     }
   
     //Music 
@@ -56,6 +63,15 @@ void draw() {
   if(screen == "main") {
   mainScreen.setVisible(false); 
   playMusic.setVisible(true); 
+  taskOne.setVisible(true);
+  taskOneBut.setVisible(true); 
+  taskTwo.setVisible(true); 
+  taskTwoBut.setVisible(true); 
+  taskThree.setVisible(true); 
+  taskThreeBut.setVisible(true); 
+  taskListLabel.setVisible(true);
+  addTaskBut.setVisible(true); 
+  stopwatchBtn.setVisible(true); 
   displayStopwatch();
   displayDate();
   updateProgressBar();
@@ -79,31 +95,6 @@ void displayQuote() {
   text(quote, width/2, height/2);   
 }
 
-void displayStopwatch() {  
-  background(255);
-  
-  int h_current = hour();
-  int m_current = minute();
-  int s_current = second();
-  
-  int hElapsed = h_current - h_start;
-  int mElapsed = m_current - m_start;
-  if (mElapsed < 0) {
-    hElapsed -= 1;
-    mElapsed += 60;
-  }
-  int sElapsed = s_current - s_start;
-  if (sElapsed < 0) {
-    mElapsed -= 1;
-    sElapsed += 60;
-  }
-
-  textSize(30);
-  textAlign(CENTER);
-  fill(0);
-  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 100);
-}
-
 void displayDate() {
   int d = day();
   int m = month();
@@ -113,6 +104,57 @@ void displayDate() {
   textAlign(CENTER);
   fill(0);
   text(m+"/"+d+"/"+y, 600, 100);
+}
+
+void displayStopwatch() {  
+  background(255);
+  
+  if (start) {
+    h_start = hour();
+    m_start = minute();
+    s_start = second();
+  }
+  
+  h_current = hour();
+  m_current = minute();
+  s_current = second();
+  
+  hElapsed = h_current - h_start;
+  mElapsed = m_current - m_start;
+  if (mElapsed < 0) {
+    hElapsed -= 1;
+    mElapsed += 60;
+  }
+  sElapsed = s_current - s_start;
+  if (sElapsed < 0) {
+    mElapsed -= 1;
+    sElapsed += 60;
+  }
+  
+  if (start != false) {
+    sElapsed -= sPaused;
+      if (sElapsed < 0) {
+        mElapsed -= 1;
+        sElapsed += 60;
+      }
+      mElapsed -= mPaused;
+      if (mElapsed < 0) {
+        hElapsed -= 1;
+        mElapsed += 60;
+      }
+      hElapsed -= hPaused;
+  }
+    
+  for (int m:studyBreaks) {
+    if (mElapsed == m && sElapsed == 0) {
+      text("Study Break", width/2, 150);
+    }
+  }
+
+  textSize(30);
+  textAlign(CENTER);
+  fill(0);
+  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 100);
 }
 
 void updateProgressBar(){
