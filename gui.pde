@@ -1,3 +1,11 @@
+/* =========================================================
+ * ====                   WARNING                        ===
+ * =========================================================
+ * The code in this tab has been generated from the GUI form
+ * designer and care should be taken when editing this file.
+ * Only add/edit code inside the event handlers i.e. only
+ * use lines between the matching comment tags. e.g.
+
  void myBtnEvents(GButton button) { //_CODE_:button1:12356:
      // It is safe to enter your event code here  
  } //_CODE_:button1:12356:
@@ -43,49 +51,37 @@ public void playMusicPressed(GButton source, GEvent event) { //_CODE_:playMusic:
     
 } //_CODE_:playMusic:530303:
 
-public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatchBtn:876681:
-  if (start) {
-    h_start = hour();
-    m_start = minute();
-    s_start = second();
-    
-    start = false;
-  }
-  
-  if (pause) {
-    pause = false;
-    stopwatchBtn.setText("Resume");
-    
-    h_pause = hour();
-    m_pause = minute();
-    s_pause = second();
-    
-    noLoop();
-  }
-  else { 
-    pause = true;
-    stopwatchBtn.setText("Pause");
-    
-    h_current = hour();
-    m_current = minute();
-    s_current = second();
-    
-    hPaused = h_current - h_pause;
-    mPaused = m_current - m_pause;
-    if (mPaused < 0) {
-      hPaused -= 1;
-      mPaused += 60;
-    }
-    sPaused = s_current - s_pause;
-    if (sPaused < 0) {
-      mPaused -= 1;
-      sPaused += 60;
-    }    
-    
-    loop();
-  }
-} //_CODE_:stopwatchBtn:876681:
+public void taskOneTyped(GTextField source, GEvent event) { //_CODE_:taskOne:624650:
+  println("textfield1 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:taskOne:624650:
 
+public void taskTwoTyped(GTextField source, GEvent event) { //_CODE_:taskTwo:893488:
+  println("textfield2 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:taskTwo:893488:
+
+public void taskThreeTyped(GTextField source, GEvent event) { //_CODE_:taskThree:438441:
+  println("textfield3 - GTextField >> GEvent." + event + " @ " + millis());
+} //_CODE_:taskThree:438441:
+
+public void taskOneButPressed(GButton source, GEvent event) { //_CODE_:taskOneBut:975853:
+  println("button1 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:taskOneBut:975853:
+
+public void taskTwoButPressed(GButton source, GEvent event) { //_CODE_:taskTwoBut:708862:
+  println("button2 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:taskTwoBut:708862:
+
+public void taskThreeButPressed(GButton source, GEvent event) { //_CODE_:taskThreeBut:814104:
+  println("button3 - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:taskThreeBut:814104:
+
+public void addTaskButPressed(GButton source, GEvent event) { //_CODE_:addTaskBut:636625:
+  println("addTaskBut - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:addTaskBut:636625:
+
+public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatchBtn:937837:
+  println("stopwatchBtn - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:stopwatchBtn:937837:
 
 
 
@@ -96,14 +92,39 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  mainScreen = new GButton(this, 381, 563, 80, 30);
+  mainScreen = new GButton(this, 365, 704, 80, 30);
   mainScreen.setText("Main Screen");
   mainScreen.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   mainScreen.addEventHandler(this, "mainScreenClicked");
-  playMusic = new GButton(this, 691, 14, 80, 30);
+  playMusic = new GButton(this, 669, 14, 80, 30);
   playMusic.setText("Play Music");
   playMusic.addEventHandler(this, "playMusicPressed");
-  stopwatchBtn = new GButton(this, 400, 180, 80, 30);
+  taskOne = new GTextField(this, 156, 309, 120, 30, G4P.SCROLLBARS_HORIZONTAL_ONLY);
+  taskOne.setOpaque(true);
+  taskOne.addEventHandler(this, "taskOneTyped");
+  taskTwo = new GTextField(this, 155, 382, 120, 30, G4P.SCROLLBARS_HORIZONTAL_ONLY);
+  taskTwo.setOpaque(true);
+  taskTwo.addEventHandler(this, "taskTwoTyped");
+  taskThree = new GTextField(this, 157, 451, 120, 30, G4P.SCROLLBARS_HORIZONTAL_ONLY);
+  taskThree.setOpaque(true);
+  taskThree.addEventHandler(this, "taskThreeTyped");
+  taskOneBut = new GButton(this, 91, 306, 38, 32);
+  taskOneBut.setText("Done");
+  taskOneBut.addEventHandler(this, "taskOneButPressed");
+  taskTwoBut = new GButton(this, 89, 382, 41, 30);
+  taskTwoBut.setText("Done");
+  taskTwoBut.addEventHandler(this, "taskTwoButPressed");
+  taskThreeBut = new GButton(this, 87, 449, 42, 30);
+  taskThreeBut.setText("Done");
+  taskThreeBut.addEventHandler(this, "taskThreeButPressed");
+  addTaskBut = new GButton(this, 328, 255, 80, 30);
+  addTaskBut.setText("Add Task");
+  addTaskBut.addEventHandler(this, "addTaskButPressed");
+  taskListLabel = new GLabel(this, 100, 250, 206, 44);
+  taskListLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  taskListLabel.setText("Task List");
+  taskListLabel.setOpaque(false);
+  stopwatchBtn = new GButton(this, 500, 194, 80, 30);
   stopwatchBtn.setText("Start");
   stopwatchBtn.addEventHandler(this, "stopwatchBtn_click");
 }
@@ -112,4 +133,12 @@ public void createGUI(){
 // autogenerated do not edit
 GButton mainScreen; 
 GButton playMusic; 
+GTextField taskOne; 
+GTextField taskTwo; 
+GTextField taskThree; 
+GButton taskOneBut; 
+GButton taskTwoBut; 
+GButton taskThreeBut; 
+GButton addTaskBut; 
+GLabel taskListLabel; 
 GButton stopwatchBtn; 
