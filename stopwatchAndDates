@@ -1,3 +1,4 @@
+
 void displayDate() {
   int d = day();
   int m = month();
@@ -12,22 +13,42 @@ void displayDate() {
 void displayStopwatch() {  
   background(255);
   
-  int h_current = hour();
-  int m_current = minute();
-  int s_current = second();
+  if (start) {
+    h_start = hour();
+    m_start = minute();
+    s_start = second();
+  }
   
-  int hElapsed = h_current - h_start;
-  int mElapsed = m_current - m_start;
+  h_current = hour();
+  m_current = minute();
+  s_current = second();
+  
+  hElapsed = h_current - h_start;
+  mElapsed = m_current - m_start;
   if (mElapsed < 0) {
     hElapsed -= 1;
     mElapsed += 60;
   }
-  int sElapsed = s_current - s_start;
+  sElapsed = s_current - s_start;
   if (sElapsed < 0) {
     mElapsed -= 1;
     sElapsed += 60;
   }
   
+  if (start != false) {
+    sElapsed -= sPaused;
+      if (sElapsed < 0) {
+        mElapsed -= 1;
+        sElapsed += 60;
+      }
+      mElapsed -= mPaused;
+      if (mElapsed < 0) {
+        hElapsed -= 1;
+        mElapsed += 60;
+      }
+      hElapsed -= hPaused;
+  }
+    
   for (int m:studyBreaks) {
     if (mElapsed == m && sElapsed == 0) {
       text("Study Break", width/2, 150);

@@ -11,9 +11,16 @@ SoundFile lofi;
 SoundFile brownNoise; 
 String chosenSong;
 boolean musicPaused = false; 
-int h_start;
-int m_start;
-int s_start;
+
+int h_start, m_start, s_start;
+int h_pause, m_pause, s_pause;
+int h_current, m_current, s_current;
+int studyBreak = 1;
+ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
+boolean pause;
+boolean start = true;
+int hElapsed, mElapsed, sElapsed;
+int hPaused, mPaused, sPaused;
 
 //Progress bar
 int pBarLength = 300;
@@ -31,6 +38,11 @@ void setup() {
     //Adding initial tasks
     for(int i = 0; i < 10; i++){
         tasks.add(null);
+    }
+
+    //Setting study breaks
+    for (int m = studyBreak; m < 60; m += studyBreak) {
+      studyBreaks.add(m);
     }
   
     //Music 
