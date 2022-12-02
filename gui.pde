@@ -68,7 +68,46 @@ public void addTaskButPressed(GButton source, GEvent event) { //_CODE_:addTaskBu
 } //_CODE_:addTaskBut:636625:
 
 public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatchBtn:937837:
-  println("stopwatchBtn - GButton >> GEvent." + event + " @ " + millis());
+  if (start) {
+    h_start = hour();
+    m_start = minute();
+    s_start = second();
+    
+    start = false;
+  }
+  
+  if (pause) {
+    pause = false;
+    stopwatchBtn.setText("Resume");
+    
+    h_pause = hour();
+    m_pause = minute();
+    s_pause = second();
+    
+    noLoop();
+  }
+  else { 
+    pause = true;
+    stopwatchBtn.setText("Pause");
+    
+    h_current = hour();
+    m_current = minute();
+    s_current = second();
+    
+    hPaused = h_current - h_pause;
+    mPaused = m_current - m_pause;
+    if (mPaused < 0) {
+      hPaused -= 1;
+      mPaused += 60;
+    }
+    sPaused = s_current - s_pause;
+    if (sPaused < 0) {
+      mPaused -= 1;
+      sPaused += 60;
+    }    
+    
+    loop();
+  }
 } //_CODE_:stopwatchBtn:937837:
 
 public void taskOneTyped(GTextArea source, GEvent event) { //_CODE_:taskOne:271505:
