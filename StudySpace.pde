@@ -9,8 +9,8 @@ String screen = "";
 SoundFile classical; 
 SoundFile lofi; 
 SoundFile brownNoise; 
-String chosenSong; 
-boolean musicPlaying = false; 
+String chosenSong;
+boolean musicPaused = false; 
 int h_start;
 int m_start;
 int s_start;
@@ -22,6 +22,7 @@ void setup() {
     size(800,800);
 
     createGUI();
+    playMusic.setVisible(false); 
     background(255);
     
     //QUOTE
@@ -42,6 +43,7 @@ void draw() {
   //Main screen
   if(screen == "main") {
   mainScreen.setVisible(false); 
+  playMusic.setVisible(true); 
   displayStopwatch();
   displayDate();
   updateProgressBar();
