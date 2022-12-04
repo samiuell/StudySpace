@@ -21,6 +21,9 @@ boolean start = true;
 int hElapsed, mElapsed, sElapsed;
 int hPaused, mPaused, sPaused;
 
+//Task boxes
+int taskNumber = 1;
+boolean extraSpace = false;
 
 //Progress bar
 int pBarLength = 300;
