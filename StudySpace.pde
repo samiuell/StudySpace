@@ -1,7 +1,7 @@
 import processing.sound.*;
 import g4p_controls.*;
 
-ArrayList<Task> tasks = new ArrayList<>();
+Task[] tasks = new Task[16];
 String[] quotes;
 String screen = ""; 
 
@@ -51,8 +51,8 @@ void setup() {
     displayQuote(); 
     
     //Adding initial tasks
-    for(int i = 0; i < 10; i++){
-        tasks.add(null);
+    for(int i = 0; i < 16; i++){
+        tasks[i]=null;
     }
   
     //Music 
