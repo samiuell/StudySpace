@@ -110,35 +110,44 @@ public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatc
   }
 } //_CODE_:stopwatchBtn:937837:
 
-public void taskbox1_click(GCheckbox source, GEvent event) { //_CODE_:taskbox1:646323:
+public void taskbox1_click(GCheckbox source, GEvent event) { 
+  tasks[1].done=true;
 } //_CODE_:taskbox1:646323:
 
 public void taskbox2_click(GCheckbox source, GEvent event) { //_CODE_:taskbox2:809529:
+  tasks[2].done=true;
 } //_CODE_:taskbox2:809529:
 
 public void taskbox3_click(GCheckbox source, GEvent event) { //_CODE_:taskbox3:411266:
+  tasks[3].done=true;
 } //_CODE_:taskbox3:411266:
 
 public void taskbox4_click(GCheckbox source, GEvent event) { //_CODE_:taskbox4:663615:
+  tasks[4].done=true;
 } //_CODE_:taskbox4:663615:
 
 public void taskbox5_click(GCheckbox source, GEvent event) { //_CODE_:taskbox5:942467:
+  tasks[5].done=true;
 } //_CODE_:taskbox5:942467:
 
 public void taskbox6_click(GCheckbox source, GEvent event) { //_CODE_:taskbox6:957993:
-  println("taskbox6 - GCheckbox >> GEvent." + event + " @ " + millis());
+  tasks[6].done=true;
 } //_CODE_:taskbox6:957993:
 
 public void taskbox7_click(GCheckbox source, GEvent event) { //_CODE_:taskbox7:244092:
+  tasks[7].done=true;
 } //_CODE_:taskbox7:244092:
 
 public void taskbox8_click(GCheckbox source, GEvent event) { //_CODE_:taskbox8:881526:
+  tasks[8].done=true;
 } //_CODE_:taskbox8:881526:
 
 public void taskbox9_click(GCheckbox source, GEvent event) { //_CODE_:taskbox9:848530:
+  tasks[9].done=true;
 } //_CODE_:taskbox9:848530:
 
 public void taskbox10_click(GCheckbox source, GEvent event) { //_CODE_:taskbox10:841116:
+  tasks[10].done=true;
 } //_CODE_:taskbox10:841116:
 
 public void taskInput_change(GTextField source, GEvent event) { //_CODE_:taskInput:626904:
@@ -150,46 +159,55 @@ public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTask
     taskbox1.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[1].name = task;
   }
   else if (taskNumber == 2) {
     taskbox2.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[2].name = task;
   }
   else if (taskNumber == 3) {
     taskbox3.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[3].name = task;
   }
   else if (taskNumber == 4) {
     taskbox4.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[4].name = task;
   }
   else if (taskNumber == 5) {
     taskbox5.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[5].name = task;
   }
   else if (taskNumber == 6) {
     taskbox6.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[6].name = task;
   }
   else if (taskNumber == 7) {
     taskbox7.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[7].name = task;
   }
   else if (taskNumber == 8) {
     taskbox8.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[8].name = task;
   }
   else if (taskNumber == 9) {
     taskbox9.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[9].name = task;
   }
   else if (taskNumber == 10) {
     taskbox10.setText(task);
@@ -197,47 +215,58 @@ public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTask
       taskNumber = 11;
     }
     taskInput.setText("");
+    tasks[10].name = task;
   }
   else if (taskNumber == 11) {
     extraTask1.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[11].name = task;
   }
   else if (taskNumber == 12) {
     extraTask2.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[12].name = task;
   }
   else if (taskNumber == 13) {
     extraTask3.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[13].name = task;
   }
   else if (taskNumber == 14) {
     extraTask4.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[14].name = task;
   }
   else if (taskNumber == 15) {
     extraTask5.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[15].name = task;
   }
 } //_CODE_:addTaskButton:276838:
 
 public void extraTask1_click(GCheckbox source, GEvent event) { //_CODE_:extraTask1:528179:
+  tasks[11].done=true;
 } //_CODE_:extraTask1:528179:
 
 public void extraTask2_click(GCheckbox source, GEvent event) { //_CODE_:extraTask2:231896:
+  tasks[12].done=true;
 } //_CODE_:extraTask2:231896:
 
 public void extraTask3_click(GCheckbox source, GEvent event) { //_CODE_:extraTask3:336006:
+  tasks[13].done=true;
 } //_CODE_:extraTask3:336006:
 
 public void extraTask4_click(GCheckbox source, GEvent event) { //_CODE_:extraTask4:932629:
+  tasks[14].done=true;
 } //_CODE_:extraTask4:932629:
 
 public void extraTask5_click(GCheckbox source, GEvent event) { //_CODE_:extraTask5:337470:
+  tasks[15].done=true;
 } //_CODE_:extraTask5:337470:
 
 public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extraSpaceButton:951991:
@@ -381,3 +410,31 @@ GCheckbox extraTask3;
 GCheckbox extraTask4; 
 GCheckbox extraTask5; 
 GButton extraSpaceButton; 
+  
+//I can't run the code or make buttons for some reason... Sam please add a clear button and link it to this function to clear stuff.... MUCH THANKS!
+void clear(){
+  taskbox1.setText("");
+  taskbox2.setText("");
+  taskbox3.setText("");
+  taskbox4.setText("");
+  taskbox5.setText("");
+  taskbox6.setText("");
+  taskbox7.setText("");
+  taskbox8.setText("");
+  taskbox9.setText("");
+  taskbox10.setText("");
+  extraTask1.setText("");
+  extraTask2.setText("");
+  extraTask3.setText("");
+  extraTask4.setText("");
+  extraTask5.setText("");
+  
+  //next bit of code is optional if we want to delete the extra space 
+  extraTask1.setVisible(true);
+  extraTask2.setVisible(true);
+  extraTask3.setVisible(true);
+  extraTask4.setVisible(true);
+  extraTask5.setVisible(true);
+  extraSpaceButton.setVisible(true);
+  extraSpace = false;
+}
