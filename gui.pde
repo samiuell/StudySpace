@@ -102,43 +102,53 @@ public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatc
 
 
 public void taskbox1_click(GCheckbox source, GEvent event) { //_CODE_:taskbox1:646323:
-  tasks[1].done = true; 
+  if(tasks[1].done) tasks[1].done=false;
+  else tasks[1].done = true; 
 } //_CODE_:taskbox1:646323:
 
 public void taskbox2_click(GCheckbox source, GEvent event) { //_CODE_:taskbox2:809529:
-  tasks[2].done = true; 
+  if(tasks[2].done) tasks[2].done=false;
+  else tasks[2].done = true; 
 } //_CODE_:taskbox2:809529:
 
 public void taskbox3_click(GCheckbox source, GEvent event) { //_CODE_:taskbox3:411266:
-  tasks[3].done = true; 
+  if(tasks[3].done) tasks[3].done=false;
+  else tasks[3].done = true; 
 } //_CODE_:taskbox3:411266:
 
 public void taskbox4_click(GCheckbox source, GEvent event) { //_CODE_:taskbox4:663615:
-  tasks[4].done = true;
+  if(tasks[4].done) tasks[4].done=false;
+  else tasks[4].done = true; 
 } //_CODE_:taskbox4:663615:
 
 public void taskbox5_click(GCheckbox source, GEvent event) { //_CODE_:taskbox5:942467:
-  tasks[5].done = true; 
+  if(tasks[5].done) tasks[5].done=false;
+  else tasks[5].done = true; 
 } //_CODE_:taskbox5:942467:
 
 public void taskbox6_click(GCheckbox source, GEvent event) { //_CODE_:taskbox6:957993:
-  tasks[6].done = true; 
+  if(tasks[6].done) tasks[6].done=false;
+  else tasks[6].done = true; 
 } //_CODE_:taskbox6:957993:
 
 public void taskbox7_click(GCheckbox source, GEvent event) { //_CODE_:taskbox7:244092:
-  tasks[7].done = true; 
+  if(tasks[7].done) tasks[7].done=false;
+  else tasks[7].done = true; 
 } //_CODE_:taskbox7:244092:
 
 public void taskbox8_click(GCheckbox source, GEvent event) { //_CODE_:taskbox8:881526:
-  tasks[8].done = true; 
+  if(tasks[8].done) tasks[8].done=false;
+  else tasks[8].done = true; 
 } //_CODE_:taskbox8:881526:
 
 public void taskbox9_click(GCheckbox source, GEvent event) { //_CODE_:taskbox9:848530:
-  tasks[9].done = true; 
+  if(tasks[9].done) tasks[9].done=false;
+  else tasks[9].done = true; 
 } //_CODE_:taskbox9:848530:
 
 public void taskbox10_click(GCheckbox source, GEvent event) { //_CODE_:taskbox10:841116:
-  tasks[10].done = true; 
+  if(tasks[10].done) tasks[10].done=false;
+  else tasks[10].done = true; 
 } //_CODE_:taskbox10:841116:
 
 
@@ -244,25 +254,29 @@ public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTask
 
 
 public void extraTask1_click(GCheckbox source, GEvent event) { //_CODE_:extraTask1:528179:
-  tasks[11].done = true; 
+  if(tasks[11].done) tasks[11].done=false;
+  else tasks[11].done = true; 
 } //_CODE_:extraTask1:528179:
 
 public void extraTask2_click(GCheckbox source, GEvent event) { //_CODE_:extraTask2:231896:
-  tasks[12].done = true;
+  if(tasks[12].done) tasks[12].done=false;
+  else tasks[12].done = true; 
 } //_CODE_:extraTask2:231896:
 
 public void extraTask3_click(GCheckbox source, GEvent event) { //_CODE_:extraTask3:336006:
-  tasks[13].done = true; 
+  if(tasks[13].done) tasks[13].done=false;
+  else tasks[13].done = true; 
 } //_CODE_:extraTask3:336006:
 
 public void extraTask4_click(GCheckbox source, GEvent event) { //_CODE_:extraTask4:932629:
-  tasks[14].done = true; 
+  if(tasks[14].done) tasks[14].done=false;
+  else tasks[14].done = true; 
 } //_CODE_:extraTask4:932629:
 
 public void extraTask5_click(GCheckbox source, GEvent event) { //_CODE_:extraTask5:337470:
-  tasks[15].done = true; 
+  if(tasks[15].done) tasks[15].done=false;
+  else tasks[15].done = true; 
 } //_CODE_:extraTask5:337470:
-
 
 public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extraSpaceButton:951991:
   extraTask1 = new GCheckbox(this, 50, 550, 300, 20);
