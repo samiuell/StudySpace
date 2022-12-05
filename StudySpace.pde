@@ -66,7 +66,7 @@ void setup() {
     
     //Adding initial tasks
     for(int i = 0; i < 16; i++) {
-      tasks[i] = null;
+      tasks[i] = new Task();
     }
   
     //Loading music 
@@ -198,13 +198,12 @@ void displayStopwatch() {
 
 
 void updateProgressBar(){
-    //Progress Bar
   fill(255);
   rect(250,165,pBarLength,20);
   int total = 0;
   int numComp = 0;
   for(Task t: tasks){
-    if(t==null){
+    if(t.name.equals("")){
     }
     else{
       total++;
