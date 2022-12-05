@@ -21,6 +21,7 @@ public void mainScreenClicked(GButton source, GEvent event) { //_CODE_:mainScree
   s_start = second();
 } //_CODE_:mainScreen:980433:
 
+
 public void playMusicPressed(GButton source, GEvent event) { //_CODE_:playMusic:530303:
   if(musicPaused == false) {
     
@@ -51,21 +52,10 @@ public void playMusicPressed(GButton source, GEvent event) { //_CODE_:playMusic:
     
 } //_CODE_:playMusic:530303:
 
-public void taskOneButPressed(GButton source, GEvent event) { //_CODE_:taskOneBut:975853:
-  println("button1 - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:taskOneBut:975853:
+public void screenshotPressed(GButton source, GEvent event) {
+  screenshot(); 
+}
 
-public void taskTwoButPressed(GButton source, GEvent event) { //_CODE_:taskTwoBut:708862:
-  println("button2 - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:taskTwoBut:708862:
-
-public void taskThreeButPressed(GButton source, GEvent event) { //_CODE_:taskThreeBut:814104:
-  println("button3 - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:taskThreeBut:814104:
-
-public void addTaskButPressed(GButton source, GEvent event) { //_CODE_:addTaskBut:636625:
-  println("addTaskBut - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:addTaskBut:636625:
 
 public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatchBtn:937837:
   if (start) {
@@ -110,39 +100,51 @@ public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatc
   }
 } //_CODE_:stopwatchBtn:937837:
 
+
 public void taskbox1_click(GCheckbox source, GEvent event) { //_CODE_:taskbox1:646323:
+  tasks[1].done = true; 
 } //_CODE_:taskbox1:646323:
 
 public void taskbox2_click(GCheckbox source, GEvent event) { //_CODE_:taskbox2:809529:
+  tasks[2].done = true; 
 } //_CODE_:taskbox2:809529:
 
 public void taskbox3_click(GCheckbox source, GEvent event) { //_CODE_:taskbox3:411266:
+  tasks[3].done = true; 
 } //_CODE_:taskbox3:411266:
 
 public void taskbox4_click(GCheckbox source, GEvent event) { //_CODE_:taskbox4:663615:
+  tasks[4].done = true;
 } //_CODE_:taskbox4:663615:
 
 public void taskbox5_click(GCheckbox source, GEvent event) { //_CODE_:taskbox5:942467:
+  tasks[5].done = true; 
 } //_CODE_:taskbox5:942467:
 
 public void taskbox6_click(GCheckbox source, GEvent event) { //_CODE_:taskbox6:957993:
-  println("taskbox6 - GCheckbox >> GEvent." + event + " @ " + millis());
+  tasks[6].done = true; 
 } //_CODE_:taskbox6:957993:
 
 public void taskbox7_click(GCheckbox source, GEvent event) { //_CODE_:taskbox7:244092:
+  tasks[7].done = true; 
 } //_CODE_:taskbox7:244092:
 
 public void taskbox8_click(GCheckbox source, GEvent event) { //_CODE_:taskbox8:881526:
+  tasks[8].done = true; 
 } //_CODE_:taskbox8:881526:
 
 public void taskbox9_click(GCheckbox source, GEvent event) { //_CODE_:taskbox9:848530:
+  tasks[9].done = true; 
 } //_CODE_:taskbox9:848530:
 
 public void taskbox10_click(GCheckbox source, GEvent event) { //_CODE_:taskbox10:841116:
+  tasks[10].done = true; 
 } //_CODE_:taskbox10:841116:
+
 
 public void taskInput_change(GTextField source, GEvent event) { //_CODE_:taskInput:626904:
 } //_CODE_:taskInput:626904:
+
 
 public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTaskButton:276838:
   String task = taskInput.getText();
@@ -150,46 +152,55 @@ public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTask
     taskbox1.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[1].name = task;
   }
   else if (taskNumber == 2) {
     taskbox2.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[2].name = task; 
   }
   else if (taskNumber == 3) {
     taskbox3.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[3].name = task; 
   }
   else if (taskNumber == 4) {
     taskbox4.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[4].name = task; 
   }
   else if (taskNumber == 5) {
     taskbox5.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[5].name = task; 
   }
   else if (taskNumber == 6) {
     taskbox6.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[6].name = task;
   }
   else if (taskNumber == 7) {
     taskbox7.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[7].name = task;
   }
   else if (taskNumber == 8) {
     taskbox8.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[8].name = task; 
   }
   else if (taskNumber == 9) {
     taskbox9.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[9].name = task; 
   }
   else if (taskNumber == 10) {
     taskbox10.setText(task);
@@ -197,71 +208,84 @@ public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTask
       taskNumber = 11;
     }
     taskInput.setText("");
+    tasks[10].name = task; 
   }
   else if (taskNumber == 11) {
     extraTask1.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[11].name = task; 
   }
   else if (taskNumber == 12) {
     extraTask2.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[12].name = task; 
   }
   else if (taskNumber == 13) {
     extraTask3.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[13].name = task; 
   }
   else if (taskNumber == 14) {
     extraTask4.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[14].name = task; 
   }
   else if (taskNumber == 15) {
     extraTask5.setText(task);
     taskNumber += 1;
     taskInput.setText("");
+    tasks[15].name = task; 
   }
 } //_CODE_:addTaskButton:276838:
 
+
 public void extraTask1_click(GCheckbox source, GEvent event) { //_CODE_:extraTask1:528179:
+  tasks[11].done = true; 
 } //_CODE_:extraTask1:528179:
 
 public void extraTask2_click(GCheckbox source, GEvent event) { //_CODE_:extraTask2:231896:
+  tasks[12].done = true;
 } //_CODE_:extraTask2:231896:
 
 public void extraTask3_click(GCheckbox source, GEvent event) { //_CODE_:extraTask3:336006:
+  tasks[13].done = true; 
 } //_CODE_:extraTask3:336006:
 
 public void extraTask4_click(GCheckbox source, GEvent event) { //_CODE_:extraTask4:932629:
+  tasks[14].done = true; 
 } //_CODE_:extraTask4:932629:
 
 public void extraTask5_click(GCheckbox source, GEvent event) { //_CODE_:extraTask5:337470:
+  tasks[15].done = true; 
 } //_CODE_:extraTask5:337470:
 
+
 public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extraSpaceButton:951991:
-  extraTask1 = new GCheckbox(this, 50, 450, 300, 20);
+  extraTask1 = new GCheckbox(this, 50, 550, 300, 20);
   extraTask1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask1.setText("Extra Task 1");
   extraTask1.setOpaque(false);
   extraTask1.addEventHandler(this, "extraTask1_click");
-  extraTask2 = new GCheckbox(this, 50, 500, 300, 20);
+  extraTask2 = new GCheckbox(this, 50, 600, 300, 20);
   extraTask2.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask2.setText("Extra Task 2");
   extraTask2.setOpaque(false);
   extraTask2.addEventHandler(this, "extraTask2_click");
-  extraTask3 = new GCheckbox(this, 50, 550, 300, 20);
+  extraTask3 = new GCheckbox(this, 50, 650, 300, 20);
   extraTask3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask3.setText("Extra Task 3");
   extraTask3.setOpaque(false);
   extraTask3.addEventHandler(this, "extraTask3_click");
-  extraTask4 = new GCheckbox(this, 400, 450, 300, 20);
+  extraTask4 = new GCheckbox(this, 400, 550, 300, 20);
   extraTask4.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask4.setText("Extra Task 4");
   extraTask4.setOpaque(false);
   extraTask4.addEventHandler(this, "extraTask4_click");
-  extraTask5 = new GCheckbox(this, 400, 500, 300, 20);
+  extraTask5 = new GCheckbox(this, 400, 600, 300, 20);
   extraTask5.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask5.setText("Extra Task 5");
   extraTask5.setOpaque(false);
@@ -273,6 +297,39 @@ public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extr
   extraSpace = true;
   extraSpaceButton.setVisible(false);
 } //_CODE_:extraSpaceButton:951991:
+
+
+public void clearButtonClicked(GButton source, GEvent event) {
+  clear(); 
+}
+
+
+void clear(){
+  taskbox1.setText("");
+  taskbox2.setText("");
+  taskbox3.setText("");
+  taskbox4.setText("");
+  taskbox5.setText("");
+  taskbox6.setText("");
+  taskbox7.setText("");
+  taskbox8.setText("");
+  taskbox9.setText("");
+  taskbox10.setText("");
+  extraTask1.setText("");
+  extraTask2.setText("");
+  extraTask3.setText("");
+  extraTask4.setText("");
+  extraTask5.setText("");
+
+  //next bit of code is optional if we want to delete the extra space 
+  extraTask1.setVisible(true);
+  extraTask2.setVisible(true);
+  extraTask3.setVisible(true);
+  extraTask4.setVisible(true);
+  extraTask5.setVisible(true);
+  extraSpaceButton.setVisible(true);
+  extraSpace = false;
+}
 
 
 // Create all the GUI controls. 
@@ -289,79 +346,82 @@ public void createGUI(){
   playMusic = new GButton(this, 669, 14, 80, 30);
   playMusic.setText("Play Music");
   playMusic.addEventHandler(this, "playMusicPressed");
- taskbox1 = new GCheckbox(this, 50, 200, 300, 20);
+  screenshotButton = new GButton(this, 100, 14, 80, 30); 
+  screenshotButton.setText("Screenshot"); 
+  screenshotButton.addEventHandler(this, "screenshotPressed"); 
+  stopwatchBtn = new GButton(this, 360, 120, 80, 30);
+  stopwatchBtn.setText("Start");
+  stopwatchBtn.addEventHandler(this, "stopwatchBtn_click");
+  taskbox1 = new GCheckbox(this, 50, 300, 300, 20);
   taskbox1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox1.setText("Task 1");
   taskbox1.setOpaque(false);
   taskbox1.addEventHandler(this, "taskbox1_click");
-  taskbox2 = new GCheckbox(this, 50, 250, 300, 20);
+  taskbox2 = new GCheckbox(this, 50, 350, 300, 20);
   taskbox2.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox2.setText("Task 2");
   taskbox2.setOpaque(false);
   taskbox2.addEventHandler(this, "taskbox2_click");
-  taskbox3 = new GCheckbox(this, 50, 300, 300, 20);
+  taskbox3 = new GCheckbox(this, 50, 400, 300, 20);
   taskbox3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox3.setText("Task 3");
   taskbox3.setOpaque(false);
   taskbox3.addEventHandler(this, "taskbox3_click");
-  taskbox4 = new GCheckbox(this, 50, 350, 300, 20);
+  taskbox4 = new GCheckbox(this, 50, 450, 300, 20);
   taskbox4.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox4.setText("Task 4");
   taskbox4.setOpaque(false);
   taskbox4.addEventHandler(this, "taskbox4_click");
-  taskbox5 = new GCheckbox(this, 50, 400, 300, 20);
+  taskbox5 = new GCheckbox(this, 50, 500, 300, 20);
   taskbox5.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox5.setText("Task 5");
   taskbox5.setOpaque(false);
   taskbox5.addEventHandler(this, "taskbox5_click");
-  taskbox6 = new GCheckbox(this, 400, 200, 300, 20);
+  taskbox6 = new GCheckbox(this, 400, 300, 300, 20);
   taskbox6.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox6.setText("Task 6");
   taskbox6.setOpaque(false);
   taskbox6.addEventHandler(this, "taskbox6_click");
-  taskbox7 = new GCheckbox(this, 400, 250, 300, 20);
+  taskbox7 = new GCheckbox(this, 400, 350, 300, 20);
   taskbox7.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox7.setText("Task 7");
   taskbox7.setOpaque(false);
   taskbox7.addEventHandler(this, "taskbox7_click");
-  taskbox8 = new GCheckbox(this, 400, 300, 300, 20);
+  taskbox8 = new GCheckbox(this, 400, 400, 300, 20);
   taskbox8.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox8.setText("Task 8");
   taskbox8.setOpaque(false);
   taskbox8.addEventHandler(this, "taskbox8_click");
-  taskbox9 = new GCheckbox(this, 400, 350, 300, 20);
+  taskbox9 = new GCheckbox(this, 400, 450, 300, 20);
   taskbox9.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox9.setText("Task 9");
   taskbox9.setOpaque(false);
   taskbox9.addEventHandler(this, "taskbox9_click");
-  taskbox10 = new GCheckbox(this, 400, 400, 300, 20);
+  taskbox10 = new GCheckbox(this, 400, 500, 300, 20);
   taskbox10.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox10.setText("Task 10");
   taskbox10.setOpaque(false);
   taskbox10.addEventHandler(this, "taskbox10_click");
-  taskInput = new GTextField(this, 400, 150, 250, 20, G4P.SCROLLBARS_NONE);
+  taskInput = new GTextField(this, 250, 250, 250, 20, G4P.SCROLLBARS_NONE);
   taskInput.setOpaque(true);
   taskInput.addEventHandler(this, "taskInput_change");
-  addTaskButton = new GButton(this, 675, 150, 20, 20);
+  addTaskButton = new GButton(this, 525, 250, 20, 20);
   addTaskButton.setText("+");
   addTaskButton.addEventHandler(this, "addTaskButton_click");
-  
-  extraSpaceButton = new GButton(this, 300, 450, 200, 30);
+  extraSpaceButton = new GButton(this, 300, 550, 200, 30);
   extraSpaceButton.setText("Add Extra Space");
   extraSpaceButton.addEventHandler(this, "extraSpaceButton_click");
+  clearButton = new GButton(this, 150, 245, 45, 40); 
+  clearButton.setText("Clear Tasks"); 
+  clearButton.addEventHandler(this, "clearButtonClicked"); 
 }
-
 
 
 // Variable declarations 
 // autogenerated do not edit
 GButton mainScreen; 
 GButton playMusic; 
-GButton taskOneBut; 
-GButton taskTwoBut; 
-GButton taskThreeBut; 
-GButton addTaskBut; 
-GLabel taskListLabel; 
+GButton screenshotButton; 
 GButton stopwatchBtn; 
 GCheckbox taskbox1; 
 GCheckbox taskbox2; 
@@ -381,3 +441,4 @@ GCheckbox extraTask3;
 GCheckbox extraTask4; 
 GCheckbox extraTask5; 
 GButton extraSpaceButton; 
+GButton clearButton; 
