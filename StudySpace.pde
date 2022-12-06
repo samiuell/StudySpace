@@ -104,7 +104,7 @@ void draw() {
     
     if(extraSpace != true) 
       extraSpaceButton.setVisible(true); 
-
+   
     
     displayStopwatch();
     displayDate();
