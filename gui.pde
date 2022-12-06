@@ -314,35 +314,55 @@ public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extr
 
 
 public void clearButtonClicked(GButton source, GEvent event) {
-  clear(); 
+  clearTasks(); 
 }
 
 
-void clear(){
-  taskbox1.setText("");
-  taskbox2.setText("");
-  taskbox3.setText("");
-  taskbox4.setText("");
-  taskbox5.setText("");
-  taskbox6.setText("");
-  taskbox7.setText("");
-  taskbox8.setText("");
-  taskbox9.setText("");
-  taskbox10.setText("");
-  extraTask1.setText("");
-  extraTask2.setText("");
-  extraTask3.setText("");
-  extraTask4.setText("");
-  extraTask5.setText("");
+void clearTasks(){
+  taskNumber=1;
+  taskbox1.setText("Task 1");
+  taskbox2.setText("Task 2");
+  taskbox3.setText("Task 3");
+  taskbox4.setText("Task 4");
+  taskbox5.setText("Task 5");
+  taskbox6.setText("Task 6");
+  taskbox7.setText("Task 7");
+  taskbox8.setText("Task 8");
+  taskbox9.setText("Task 9");
+  taskbox10.setText("Task 10");
+  taskbox1.setSelected(false);
+  taskbox2.setSelected(false);
+  taskbox3.setSelected(false);
+  taskbox4.setSelected(false);
+  taskbox5.setSelected(false);
+  taskbox6.setSelected(false);
+  taskbox7.setSelected(false);
+  taskbox8.setSelected(false);
+  taskbox9.setSelected(false);
+  taskbox10.setSelected(false);
+  if(extraSpace){
+    extraTask1.setText("Extra Task 1");
+    extraTask2.setText("Extra Task 2");
+    extraTask3.setText("Extra Task 3");
+    extraTask4.setText("Extra Task 4");
+    extraTask5.setText("Extra Task 5");
+    extraTask1.setSelected(false);
+    extraTask2.setSelected(false);
+    extraTask3.setSelected(false);
+    extraTask4.setSelected(false);
+    extraTask5.setSelected(false);  
+    extraTask1.setVisible(false);
+    extraTask2.setVisible(false);
+    extraTask3.setVisible(false);
+    extraTask4.setVisible(false);
+    extraTask5.setVisible(false);
+    extraSpace = false;
+  }
+  
+  for(int i = 0; i<16; i++){
+    tasks[i] = new Task();
+  }
 
-  //next bit of code is optional if we want to delete the extra space 
-  extraTask1.setVisible(true);
-  extraTask2.setVisible(true);
-  extraTask3.setVisible(true);
-  extraTask4.setVisible(true);
-  extraTask5.setVisible(true);
-  extraSpaceButton.setVisible(true);
-  extraSpace = false;
 }
 
 
@@ -353,7 +373,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  mainScreen = new GButton(this, 365, 704, 80, 30);
+  mainScreen = new GButton(this, 365, 600, 80, 30);
   mainScreen.setText("Main Screen");
   mainScreen.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   mainScreen.addEventHandler(this, "mainScreenClicked");
