@@ -1,5 +1,7 @@
 import processing.sound.*;
 import g4p_controls.*;
+import java.awt.*;
+PImage screenshot;
 
 Task[] tasks = new Task[16]; 
 
@@ -218,14 +220,15 @@ void updateProgressBar(){
 }
 
 
-void screenshot(){
-  
-  String day = "";
-  String month = "";
-  if (day()<10) day = "0"+str(day());
-  else day = str(day());
-  if (month()<10) month = "0"+str(month());
-  else month = str(month());
-  saveFrame("progress/"+month+"."+day+"."+year()+".jpg");
-  
+void screenshot() {
+  try {
+    screenshot = new PImage(new Robot().createScreenCapture(new Rectangle(displayWidth/4-10, displayHeight/10, 780, 660)));
+    String day = "";
+    String month = "";
+    if (day()<10) day = "0"+str(day());
+    else day = str(day());
+    if (month()<10) month = "0"+str(month());
+    else month = str(month());
+    screenshot.save(dataPath("progress") + "/"+month+"."+day+"."+year()+".jpg");
+  } catch (AWTException e) { }
 }
