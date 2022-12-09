@@ -33,6 +33,16 @@ boolean extraSpace = false;
 //Progress bar
 int pBarLength = 300;
 
+
+//colour themes
+color textColour = color(0);
+color pink = color(255, 200, 200);
+color blue = color(200, 200, 255);
+color green = color(200, 255, 200);
+color yellow = color(255, 255, 100);
+color themeColour = pink;
+boolean darkMode = false;
+
 PImage logo; 
 
 void setup() {
@@ -59,6 +69,12 @@ void setup() {
     clearButton.setVisible(false); 
     screenshotButton.setVisible(false); 
     
+    extraTask1.setVisible(false);
+    extraTask2.setVisible(false);
+    extraTask3.setVisible(false);
+    extraTask4.setVisible(false);
+    extraTask5.setVisible(false);
+    
     background(255);
     
     //Logo
@@ -80,6 +96,8 @@ void setup() {
 
 
 void draw() {
+  if (darkMode) 
+  textColour = color(255);
   
   image(logo, 320, 50, 200, 200); 
   //Main screen
