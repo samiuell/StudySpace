@@ -6,12 +6,23 @@ void displayDate() {
   
   textSize(15);
   textAlign(CENTER);
-  fill(0);
+  fill(textColour);
   text(m+"/"+d+"/"+y, 600, 100);
 }
 
 void displayStopwatch() {  
-  background(255);
+  if (darkMode) {
+    fill(50);
+    rect(0,0,width,height);
+  }
+  else {
+    fill(255);
+    rect(0, 0, width, height);
+    fill(themeColour);
+    noStroke();
+    rect(25,25,750,750,25,25,25,25);
+    textColour = color(0);
+  }
   
   if (start) {
     h_start = hour();
@@ -54,6 +65,11 @@ void displayStopwatch() {
       text("Study Break", width/2, 150);
     }
   }
+  
+  fill(255);
+  rect(100, 50, 600, 75, 25, 25, 25, 25);
+  noFill();
+  rect(75, 40, 625, 85, 25, 25, 25, 25);
 
   textSize(30);
   textAlign(CENTER);
