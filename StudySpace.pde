@@ -1,7 +1,6 @@
 import processing.sound.*;
 import g4p_controls.*;
-import java.awt.*;
-PImage screenshot;
+import java.awt.*; 
 
 Task[] tasks = new Task[16]; 
 
@@ -33,21 +32,12 @@ boolean extraSpace = false;
 //Progress bar
 int pBarLength = 300;
 
-
-//colour themes
-color textColour = color(0);
-color pink = color(255, 200, 200);
-color blue = color(200, 200, 255);
-color green = color(200, 255, 200);
-color yellow = color(255, 255, 100);
-color themeColour = pink;
-boolean darkMode = false;
-
 PImage logo; 
+
+Font smallFont = new Font("Serif", Font.BOLD, 18); 
 
 void setup() {
     size(800,800);
-    
     //GUI
     createGUI();
    
@@ -69,12 +59,6 @@ void setup() {
     clearButton.setVisible(false); 
     screenshotButton.setVisible(false); 
     
-    extraTask1.setVisible(false);
-    extraTask2.setVisible(false);
-    extraTask3.setVisible(false);
-    extraTask4.setVisible(false);
-    extraTask5.setVisible(false);
-    
     background(255);
     
     //Logo
@@ -88,18 +72,16 @@ void setup() {
     }
   
     //Loading music 
-    classical = new SoundFile(this, "chopinNoc9.wav");
-    lofi = new SoundFile(this, "roseForBreakfast.wav"); 
-    brownNoise = new SoundFile(this, "brownNoise.wav"); 
-    
+    classical = new SoundFile(this, "wavFiles/chopinNoc9.wav");
+    lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
+    brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
+
 }
 
 
 void draw() {
-  if (darkMode) 
-  textColour = color(255);
   
-  image(logo, 320, 50, 200, 200); 
+  image(logo, 303, 50, 195, 200); 
   //Main screen
   if(screen == "main") {
     
@@ -166,7 +148,7 @@ void displayDate() {
 
 
 void displayStopwatch() {  
-  background(255);
+  background(220);
   
   if (start) {
     h_start = hour();
@@ -238,15 +220,14 @@ void updateProgressBar(){
 }
 
 
-void screenshot() {
-  try {
-    screenshot = new PImage(new Robot().createScreenCapture(new Rectangle(displayWidth/4-10, displayHeight/10, 780, 660)));
-    String day = "";
-    String month = "";
-    if (day()<10) day = "0"+str(day());
-    else day = str(day());
-    if (month()<10) month = "0"+str(month());
-    else month = str(month());
-    screenshot.save(dataPath("progress") + "/"+month+"."+day+"."+year()+".jpg");
-  } catch (AWTException e) { }
+void screenshot(){
+  
+  String day = "";
+  String month = "";
+  if (day()<10) day = "0"+str(day());
+  else day = str(day());
+  if (month()<10) month = "0"+str(month());
+  else month = str(month());
+  saveFrame("progress/"+month+"."+day+"."+year()+".jpg");
+  
 }
