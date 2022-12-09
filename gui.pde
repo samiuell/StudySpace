@@ -25,12 +25,12 @@ public void mainScreenClicked(GButton source, GEvent event) { //_CODE_:mainScree
 public void playMusicPressed(GButton source, GEvent event) { //_CODE_:playMusic:530303:
   if(musicPaused == false) {
     
-    if(chosenSong == "classical")
-      classical.play(); 
+    if(chosenSong == "lofi")
+      lofi.play(); 
     else if(chosenSong == "brownNoise")
       brownNoise.play(); 
     else
-      lofi.play(); 
+      classical.play();
     
     playMusic.setText("Pause Music"); 
     musicPaused = true; 
@@ -38,12 +38,12 @@ public void playMusicPressed(GButton source, GEvent event) { //_CODE_:playMusic:
   
   else {
     
-    if(chosenSong == "classical")
-      classical.pause(); 
+    if(chosenSong == "lofi")
+      lofi.pause(); 
     else if(chosenSong == "brownNoise")
       brownNoise.pause(); 
     else
-      lofi.pause(); 
+      classical.pause(); 
     
     playMusic.setText("Play Music"); 
     musicPaused = false; 
@@ -254,36 +254,52 @@ public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTask
 
 
 public void extraTask1_click(GCheckbox source, GEvent event) { //_CODE_:extraTask1:528179:
-  if(tasks[11].done) tasks[11].done=false;
-  else tasks[11].done = true; 
+  tasks[11].done = true; 
 } //_CODE_:extraTask1:528179:
 
 public void extraTask2_click(GCheckbox source, GEvent event) { //_CODE_:extraTask2:231896:
-  if(tasks[12].done) tasks[12].done=false;
-  else tasks[12].done = true; 
+  tasks[12].done = true;
 } //_CODE_:extraTask2:231896:
 
 public void extraTask3_click(GCheckbox source, GEvent event) { //_CODE_:extraTask3:336006:
-  if(tasks[13].done) tasks[13].done=false;
-  else tasks[13].done = true; 
+  tasks[13].done = true; 
 } //_CODE_:extraTask3:336006:
 
 public void extraTask4_click(GCheckbox source, GEvent event) { //_CODE_:extraTask4:932629:
-  if(tasks[14].done) tasks[14].done=false;
-  else tasks[14].done = true; 
+  tasks[14].done = true; 
 } //_CODE_:extraTask4:932629:
 
 public void extraTask5_click(GCheckbox source, GEvent event) { //_CODE_:extraTask5:337470:
-  if(tasks[15].done) tasks[15].done=false;
-  else tasks[15].done = true; 
+  tasks[15].done = true; 
 } //_CODE_:extraTask5:337470:
 
+
 public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extraSpaceButton:951991:
-  extraTask1.setVisible(true);
-  extraTask2.setVisible(true);
-  extraTask3.setVisible(true);
-  extraTask4.setVisible(true);
-  extraTask5.setVisible(true);
+  extraTask1 = new GCheckbox(this, 100, 550, 300, 20);
+  extraTask1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  extraTask1.setText("Extra Task 1");
+  extraTask1.setOpaque(false);
+  extraTask1.addEventHandler(this, "extraTask1_click");
+  extraTask2 = new GCheckbox(this, 100, 600, 300, 20);
+  extraTask2.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  extraTask2.setText("Extra Task 2");
+  extraTask2.setOpaque(false);
+  extraTask2.addEventHandler(this, "extraTask2_click");
+  extraTask3 = new GCheckbox(this, 100, 650, 300, 20);
+  extraTask3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  extraTask3.setText("Extra Task 3");
+  extraTask3.setOpaque(false);
+  extraTask3.addEventHandler(this, "extraTask3_click");
+  extraTask4 = new GCheckbox(this, 450, 550, 300, 20);
+  extraTask4.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  extraTask4.setText("Extra Task 4");
+  extraTask4.setOpaque(false);
+  extraTask4.addEventHandler(this, "extraTask4_click");
+  extraTask5 = new GCheckbox(this, 450, 600, 300, 20);
+  extraTask5.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
+  extraTask5.setText("Extra Task 5");
+  extraTask5.setOpaque(false);
+  extraTask5.addEventHandler(this, "extraTask5_click");
   
   if (taskNumber == 10) {
     taskNumber = 11;
@@ -294,64 +310,57 @@ public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extr
 
 
 public void clearButtonClicked(GButton source, GEvent event) {
-  clear(); 
+  clearTasks(); 
 }
 
 
-void clear(){
-  taskbox1.setText("");
-  taskbox2.setText("");
-  taskbox3.setText("");
-  taskbox4.setText("");
-  taskbox5.setText("");
-  taskbox6.setText("");
-  taskbox7.setText("");
-  taskbox8.setText("");
-  taskbox9.setText("");
-  taskbox10.setText("");
-  extraTask1.setText("");
-  extraTask2.setText("");
-  extraTask3.setText("");
-  extraTask4.setText("");
-  extraTask5.setText("");
+void clearTasks(){
+  taskNumber=1;
+  taskbox1.setText("Task 1");
+  taskbox2.setText("Task 2");
+  taskbox3.setText("Task 3");
+  taskbox4.setText("Task 4");
+  taskbox5.setText("Task 5");
+  taskbox6.setText("Task 6");
+  taskbox7.setText("Task 7");
+  taskbox8.setText("Task 8");
+  taskbox9.setText("Task 9");
+  taskbox10.setText("Task 10");
+  taskbox1.setSelected(false);
+  taskbox2.setSelected(false);
+  taskbox3.setSelected(false);
+  taskbox4.setSelected(false);
+  taskbox5.setSelected(false);
+  taskbox6.setSelected(false);
+  taskbox7.setSelected(false);
+  taskbox8.setSelected(false);
+  taskbox9.setSelected(false);
+  taskbox10.setSelected(false);
+  if(extraSpace){
+    extraTask1.setText("Extra Task 1");
+    extraTask2.setText("Extra Task 2");
+    extraTask3.setText("Extra Task 3");
+    extraTask4.setText("Extra Task 4");
+    extraTask5.setText("Extra Task 5");
+    extraTask1.setSelected(false);
+    extraTask2.setSelected(false);
+    extraTask3.setSelected(false);
+    extraTask4.setSelected(false);
+    extraTask5.setSelected(false);  
+    extraTask1.setVisible(false);
+    extraTask2.setVisible(false);
+    extraTask3.setVisible(false);
+    extraTask4.setVisible(false);
+    extraTask5.setVisible(false);
+    extraSpace = false;
+  }
 
-  //next bit of code is optional if we want to delete the extra space 
-  extraTask1.setVisible(true);
-  extraTask2.setVisible(true);
-  extraTask3.setVisible(true);
-  extraTask4.setVisible(true);
-  extraTask5.setVisible(true);
-  extraSpaceButton.setVisible(true);
-  extraSpace = false;
+  for(int i = 0; i<16; i++){
+    tasks[i] = new Task();
+  }
+
 }
 
-public void colourBtn_pink_click(GButton source, GEvent event) { //_CODE_:colourBtn_pink:321733:
-  themeColour = pink;
-} //_CODE_:colourBtn_pink:321733:
-
-public void colourBtn_blue_click(GButton source, GEvent event) { //_CODE_:colourBtn_blue:471544:
-  themeColour = blue;
-} //_CODE_:colourBtn_blue:471544:
-
-public void colourBtn_green_click(GButton source, GEvent event) { //_CODE_:colourBtn_green:920352:
-  themeColour = green;
-} //_CODE_:colourBtn_green:920352:
-
-public void colourBtn_yellow_click(GButton source, GEvent event) { //_CODE_:colourBtn_yellow:322768:
-  themeColour = yellow;
-} //_CODE_:colourBtn_yellow:322768:
-
-public void darkMode_click(GButton source, GEvent event) { //_CODE_:darkModeBtn:994179:
-  if (!darkMode) {
-    darkMode = true;
-    darkModeBtn.setText("Light Mode");
-  }
-  else { 
-    darkMode = false;
-    themeColour = pink;
-    darkModeBtn.setText("Dark Mode");
-  }
-} //_CODE_:darkModeBtn:994179:
 
 
 // Create all the GUI controls. 
@@ -361,9 +370,9 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  mainScreen = new GButton(this, 365, 704, 80, 30);
+  mainScreen = new GButton(this, 325, 600, 150, 60);
   mainScreen.setText("Main Screen");
-  mainScreen.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  mainScreen.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   mainScreen.addEventHandler(this, "mainScreenClicked");
   playMusic = new GButton(this, 669, 14, 80, 30);
   playMusic.setText("Play Music");
@@ -374,52 +383,52 @@ public void createGUI(){
   stopwatchBtn = new GButton(this, 360, 120, 80, 30);
   stopwatchBtn.setText("Start");
   stopwatchBtn.addEventHandler(this, "stopwatchBtn_click");
-  taskbox1 = new GCheckbox(this, 50, 300, 300, 20);
+  taskbox1 = new GCheckbox(this, 140, 300, 300, 20);
   taskbox1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox1.setText("Task 1");
   taskbox1.setOpaque(false);
   taskbox1.addEventHandler(this, "taskbox1_click");
-  taskbox2 = new GCheckbox(this, 50, 350, 300, 20);
+  taskbox2 = new GCheckbox(this, 140, 350, 300, 20);
   taskbox2.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox2.setText("Task 2");
   taskbox2.setOpaque(false);
   taskbox2.addEventHandler(this, "taskbox2_click");
-  taskbox3 = new GCheckbox(this, 50, 400, 300, 20);
+  taskbox3 = new GCheckbox(this, 140, 400, 300, 20);
   taskbox3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox3.setText("Task 3");
   taskbox3.setOpaque(false);
   taskbox3.addEventHandler(this, "taskbox3_click");
-  taskbox4 = new GCheckbox(this, 50, 450, 300, 20);
+  taskbox4 = new GCheckbox(this, 140, 450, 300, 20);
   taskbox4.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox4.setText("Task 4");
   taskbox4.setOpaque(false);
   taskbox4.addEventHandler(this, "taskbox4_click");
-  taskbox5 = new GCheckbox(this, 50, 500, 300, 20);
+  taskbox5 = new GCheckbox(this, 140, 500, 300, 20);
   taskbox5.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox5.setText("Task 5");
   taskbox5.setOpaque(false);
   taskbox5.addEventHandler(this, "taskbox5_click");
-  taskbox6 = new GCheckbox(this, 400, 300, 300, 20);
+  taskbox6 = new GCheckbox(this, 510, 300, 300, 20);
   taskbox6.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox6.setText("Task 6");
   taskbox6.setOpaque(false);
   taskbox6.addEventHandler(this, "taskbox6_click");
-  taskbox7 = new GCheckbox(this, 400, 350, 300, 20);
+  taskbox7 = new GCheckbox(this, 510, 350, 300, 20);
   taskbox7.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox7.setText("Task 7");
   taskbox7.setOpaque(false);
   taskbox7.addEventHandler(this, "taskbox7_click");
-  taskbox8 = new GCheckbox(this, 400, 400, 300, 20);
+  taskbox8 = new GCheckbox(this, 510, 400, 300, 20);
   taskbox8.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox8.setText("Task 8");
   taskbox8.setOpaque(false);
   taskbox8.addEventHandler(this, "taskbox8_click");
-  taskbox9 = new GCheckbox(this, 400, 450, 300, 20);
+  taskbox9 = new GCheckbox(this, 510, 450, 300, 20);
   taskbox9.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox9.setText("Task 9");
   taskbox9.setOpaque(false);
   taskbox9.addEventHandler(this, "taskbox9_click");
-  taskbox10 = new GCheckbox(this, 400, 500, 300, 20);
+  taskbox10 = new GCheckbox(this, 510, 500, 300, 20);
   taskbox10.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox10.setText("Task 10");
   taskbox10.setOpaque(false);
@@ -436,39 +445,33 @@ public void createGUI(){
   clearButton = new GButton(this, 150, 245, 45, 40); 
   clearButton.setText("Clear Tasks"); 
   clearButton.addEventHandler(this, "clearButtonClicked"); 
-  window1.noLoop();
-  window1.setActionOnClose(G4P.KEEP_OPEN);
-  window1.addDrawHandler(this, "win_draw1");
-  settingLabel = new GLabel(window1, 150, 25, 100, 30);
-  settingLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  settingLabel.setText("Settings");
-  settingLabel.setOpaque(false);
-  colourBtn_pink = new GButton(window1, 20, 90, 70, 30);
-  colourBtn_pink.setText("Pink");
-  colourBtn_pink.setLocalColorScheme(GCScheme.RED_SCHEME);
-  colourBtn_pink.addEventHandler(this, "colourBtn_pink_click");
-  colourBtn_blue = new GButton(window1, 20, 140, 70, 30);
-  colourBtn_blue.setText("Blue");
-  colourBtn_blue.addEventHandler(this, "colourBtn_blue_click");
-  colourBtn_green = new GButton(window1, 20, 190, 70, 30);
-  colourBtn_green.setText("Green");
-  colourBtn_green.setLocalColorScheme(GCScheme.GREEN_SCHEME);
-  colourBtn_green.addEventHandler(this, "colourBtn_green_click");
-  colourBtn_yellow = new GButton(window1, 20, 240, 70, 30);
-  colourBtn_yellow.setText("Yellow");
-  colourBtn_yellow.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
-  colourBtn_yellow.addEventHandler(this, "colourBtn_yellow_click");
-  darkModeBtn = new GButton(window1, 20, 290, 70, 30);
-  darkModeBtn.setText("Dark Mode");
-  darkModeBtn.addEventHandler(this, "darkMode_click");
-  colourTheme = new GLabel(window1, 5, 60, 100, 20);
-  colourTheme.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  colourTheme.setText("Colour Theme");
-  colourTheme.setOpaque(false);
-  window1.loop();
 }
 
-
+public void customGUI() {
+  GButton mainScreen; 
+GButton playMusic; 
+GButton screenshotButton; 
+GButton stopwatchBtn; 
+GCheckbox taskbox1; 
+GCheckbox taskbox2; 
+GCheckbox taskbox3; 
+GCheckbox taskbox4; 
+GCheckbox taskbox5; 
+GCheckbox taskbox6; 
+GCheckbox taskbox7; 
+GCheckbox taskbox8; 
+GCheckbox taskbox9; 
+GCheckbox taskbox10; 
+GTextField taskInput; 
+GButton addTaskButton; 
+GCheckbox extraTask1; 
+GCheckbox extraTask2; 
+GCheckbox extraTask3; 
+GCheckbox extraTask4; 
+GCheckbox extraTask5; 
+GButton extraSpaceButton; 
+GButton clearButton; 
+}
 // Variable declarations 
 // autogenerated do not edit
 GButton mainScreen; 
@@ -494,11 +497,3 @@ GCheckbox extraTask4;
 GCheckbox extraTask5; 
 GButton extraSpaceButton; 
 GButton clearButton; 
-GWindow window1;
-GLabel settingLabel; 
-GButton colourBtn_pink; 
-GButton colourBtn_blue; 
-GButton colourBtn_green; 
-GButton colourBtn_yellow; 
-GButton darkModeBtn; 
-GLabel colourTheme; 
