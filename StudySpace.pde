@@ -32,6 +32,8 @@ boolean extraSpace = false;
 //Progress bar
 int pBarLength = 300;
 
+Font font1;
+
 PImage logo; 
 
 Font smallFont = new Font("Serif", Font.BOLD, 18); 
@@ -230,4 +232,17 @@ void screenshot(){
   else month = str(month());
   saveFrame("progress/"+month+"."+day+"."+year()+".jpg");
   
+}
+
+void importFont(){
+  try {
+      //font1 = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")).deriveFont(12f);
+      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\lexend-main\\lexend-main\\fonts\\lexend\\ttf\\Lexend-Regular.ttf")).deriveFont(18f);
+      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+      ge.registerFont(font1);
+  } catch (IOException e) {
+      e.printStackTrace();
+  } catch(FontFormatException e) {
+      e.printStackTrace();
+  }
 }
