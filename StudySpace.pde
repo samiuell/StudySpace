@@ -2,7 +2,7 @@ import processing.sound.*;
 import g4p_controls.*;
 import java.awt.*; 
 
-Task[] tasks = new Task[16]; 
+Task[] tasks = new Task[17]; 
 
 String[] quotes;
 String screen = ""; 
@@ -31,8 +31,6 @@ boolean extraSpace = false;
 
 //Progress bar
 int pBarLength = 300;
-
-Font font1;
 
 PImage logo; 
 
@@ -69,7 +67,7 @@ void setup() {
     displayQuote(); 
     
     //Adding initial tasks
-    for(int i = 0; i < 16; i++) {
+    for(int i = 0; i < 17; i++) {
       tasks[i] = new Task();
     }
   
@@ -232,17 +230,4 @@ void screenshot(){
   else month = str(month());
   saveFrame("progress/"+month+"."+day+"."+year()+".jpg");
   
-}
-
-void importFont(){
-  try {
-      //font1 = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")).deriveFont(12f);
-      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\lexend-main\\lexend-main\\fonts\\lexend\\ttf\\Lexend-Regular.ttf")).deriveFont(18f);
-      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-      ge.registerFont(font1);
-  } catch (IOException e) {
-      e.printStackTrace();
-  } catch(FontFormatException e) {
-      e.printStackTrace();
-  }
 }
