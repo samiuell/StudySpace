@@ -275,31 +275,11 @@ public void extraTask5_click(GCheckbox source, GEvent event) { //_CODE_:extraTas
 
 
 public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extraSpaceButton:951991:
-  extraTask1 = new GCheckbox(this, 100, 550, 300, 20);
-  extraTask1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  extraTask1.setText("Extra Task 1");
-  extraTask1.setOpaque(false);
-  extraTask1.addEventHandler(this, "extraTask1_click");
-  extraTask2 = new GCheckbox(this, 100, 600, 300, 20);
-  extraTask2.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  extraTask2.setText("Extra Task 2");
-  extraTask2.setOpaque(false);
-  extraTask2.addEventHandler(this, "extraTask2_click");
-  extraTask3 = new GCheckbox(this, 100, 650, 300, 20);
-  extraTask3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  extraTask3.setText("Extra Task 3");
-  extraTask3.setOpaque(false);
-  extraTask3.addEventHandler(this, "extraTask3_click");
-  extraTask4 = new GCheckbox(this, 450, 550, 300, 20);
-  extraTask4.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  extraTask4.setText("Extra Task 4");
-  extraTask4.setOpaque(false);
-  extraTask4.addEventHandler(this, "extraTask4_click");
-  extraTask5 = new GCheckbox(this, 450, 600, 300, 20);
-  extraTask5.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
-  extraTask5.setText("Extra Task 5");
-  extraTask5.setOpaque(false);
-  extraTask5.addEventHandler(this, "extraTask5_click");
+  extraTask1.setVisible(true);
+  extraTask2.setVisible(true);
+  extraTask3.setVisible(true);
+  extraTask4.setVisible(true);
+  extraTask5.setVisible(true);
   
   if (taskNumber == 10) {
     taskNumber = 11;
