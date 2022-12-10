@@ -42,10 +42,11 @@ color pink = color(255, 200, 200);
 color blue = color(200, 200, 255);
 color green = color(200, 255, 200);
 color yellow = color(255, 255, 100);
-color themeColour = pink;
+color themeColour = green;
 boolean darkMode = false;
 
 void setup() {
+    
     importFont();
     font2 = createFont("Lexend-Regular.ttf",25);
     textFont(font2);
@@ -189,7 +190,7 @@ void screenshot() {
 
 void importFont(){
   try {
-      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\StudySpace-main\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
+      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\samri\\OneDrive\\Desktop\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
       GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
       ge.registerFont(font1);
   } catch (IOException e) {
