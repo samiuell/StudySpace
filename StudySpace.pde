@@ -1,8 +1,11 @@
 import processing.sound.*;
 import g4p_controls.*;
 import java.awt.*; 
+PImage screenshot;
 
 Task[] tasks = new Task[17]; 
+
+GCheckbox[] taskBoxes = new GCheckbox[17];
 
 String[] quotes;
 String screen = ""; 
@@ -89,7 +92,7 @@ void setup() {
 
 
 void draw() {
-  
+  importFont();
   image(logo, 303, 50, 195, 200); 
   //Main screen
   if(screen == "main") {
@@ -229,14 +232,29 @@ void updateProgressBar(){
 }
 
 
-void screenshot(){
-  
-  String day = "";
-  String month = "";
-  if (day()<10) day = "0"+str(day());
-  else day = str(day());
-  if (month()<10) month = "0"+str(month());
-  else month = str(month());
-  saveFrame("progress/"+month+"."+day+"."+year()+".jpg");
-  
+void screenshot() {
+  try {
+    screenshot = new PImage(new Robot().createScreenCapture(new Rectangle(displayWidth/4-10, displayHeight/10, 780, 660)));
+    String day = "";
+    String month = "";
+    if (day()<10) day = "0"+str(day());
+    else day = str(day());
+    if (month()<10) month = "0"+str(month());
+    else month = str(month());
+    screenshot.save(dataPath("progress") + "/"+month+"."+day+"."+year()+".jpg");
+  } catch (AWTException e) { }
+}
+
+
+void importFont(){
+  try {
+      //font1 = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")).deriveFont(12f);
+      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\lexend-main\\lexend-main\\fonts\\lexend\\ttf\\Lexend-Regular.ttf")).deriveFont(18f);
+      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+      ge.registerFont(font1);
+  } catch (IOException e) {
+      e.printStackTrace();
+  } catch(FontFormatException e) {
+      e.printStackTrace();
+  }
 }
