@@ -5,7 +5,6 @@
  * designer and care should be taken when editing this file.
  * Only add/edit code inside the event handlers i.e. only
  * use lines between the matching comment tags. e.g.
-
  void myBtnEvents(GButton button) { //_CODE_:button1:12356:
      // It is safe to enter your event code here  
  } //_CODE_:button1:12356:
@@ -55,6 +54,7 @@ public void screenshotPressed(GButton source, GEvent event) {
 
 
 public void stopwatchBtn_click(GButton source, GEvent event) { //_CODE_:stopwatchBtn:937837:
+  frameRate(1); 
  if (pause) {
     start = false;
     stopwatchBtn.setText("Pause");
@@ -163,32 +163,32 @@ public void extraTask6_click(GCheckbox source, GEvent event){
 
 
 public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extraSpaceButton:951991:
-  extraTask1 = new GCheckbox(this, 140, 550, 300, 20);
+  extraTask1 = new GCheckbox(this, 140, 600, 300, 20);
   extraTask1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask1.setText("Task 11");
   extraTask1.setOpaque(false);
   extraTask1.addEventHandler(this, "extraTask1_click");
-  extraTask2 = new GCheckbox(this, 140, 600, 300, 20);
+  extraTask2 = new GCheckbox(this, 140, 650, 300, 20);
   extraTask2.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask2.setText("Task 12");
   extraTask2.setOpaque(false);
   extraTask2.addEventHandler(this, "extraTask2_click");
-  extraTask3 = new GCheckbox(this, 140, 650, 300, 20);
+  extraTask3 = new GCheckbox(this, 140, 700, 300, 20);
   extraTask3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask3.setText("Task 13");
   extraTask3.setOpaque(false);
   extraTask3.addEventHandler(this, "extraTask3_click");
-  extraTask4 = new GCheckbox(this, 510, 550, 300, 20);
+  extraTask4 = new GCheckbox(this, 510, 600, 300, 20);
   extraTask4.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask4.setText("Task 14");
   extraTask4.setOpaque(false);
   extraTask4.addEventHandler(this, "extraTask4_click");
-  extraTask5 = new GCheckbox(this, 510, 600, 300, 20);
+  extraTask5 = new GCheckbox(this, 510, 650, 300, 20);
   extraTask5.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   extraTask5.setText("Task 15");
   extraTask5.setOpaque(false);
   extraTask5.addEventHandler(this, "extraTask5_click");
-  extraTask6 = new GCheckbox(this, 510, 650, 300, 20); 
+  extraTask6 = new GCheckbox(this, 510, 700, 300, 20); 
   extraTask6.setIconAlign(GAlign.LEFT, GAlign.MIDDLE); 
   extraTask6.setText("Task 16"); 
   extraTask6.setOpaque(false); 
@@ -245,10 +245,6 @@ void clearTasks(){
 
 }
 
-public void settingButton_click(GButton source, GEvent event) { //_CODE_:settingButton:586562:
-  println("settingButton - GButton >> GEvent." + event + " @ " + millis());
-} //_CODE_:settingButton:586562:
-
 synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:window1:804261:
   appc.background(230);
 } //_CODE_:window1:804261:
@@ -295,11 +291,11 @@ public void createGUI(){
   mainScreen.setFont(font1);
   mainScreen.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   mainScreen.addEventHandler(this, "mainScreenClicked");
-  playMusic = new GButton(this, 669, 14, 80, 30);
+  playMusic = new GButton(this, 680, 30, 80, 30);
   playMusic.setText("Play Music");
   playMusic.setFont(font1.deriveFont(13f));
   playMusic.addEventHandler(this, "playMusicPressed");
-  screenshotButton = new GButton(this, 100, 14, 80, 30); 
+  screenshotButton = new GButton(this, 50, 30, 80, 30); 
   screenshotButton.setText("Screenshot"); 
   screenshotButton.setFont(font1.deriveFont(13f));
   screenshotButton.addEventHandler(this, "screenshotPressed"); 
@@ -307,52 +303,52 @@ public void createGUI(){
   stopwatchBtn.setText("Start");
   stopwatchBtn.setFont(font1);
   stopwatchBtn.addEventHandler(this, "stopwatchBtn_click");
-  taskbox1 = new GCheckbox(this, 140, 300, 300, 20);
+  taskbox1 = new GCheckbox(this, 140, 350, 300, 20);
   taskbox1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox1.setText("Task 1");
   taskbox1.setOpaque(false);
   taskbox1.addEventHandler(this, "taskbox1_click");
-  taskbox2 = new GCheckbox(this, 140, 350, 300, 20);
+  taskbox2 = new GCheckbox(this, 140, 400, 300, 20);
   taskbox2.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox2.setText("Task 2");
   taskbox2.setOpaque(false);
   taskbox2.addEventHandler(this, "taskbox2_click");
-  taskbox3 = new GCheckbox(this, 140, 400, 300, 20);
+  taskbox3 = new GCheckbox(this, 140, 450, 300, 20);
   taskbox3.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox3.setText("Task 3");
   taskbox3.setOpaque(false);
   taskbox3.addEventHandler(this, "taskbox3_click");
-  taskbox4 = new GCheckbox(this, 140, 450, 300, 20);
+  taskbox4 = new GCheckbox(this, 140, 500, 300, 20);
   taskbox4.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox4.setText("Task 4");
   taskbox4.setOpaque(false);
   taskbox4.addEventHandler(this, "taskbox4_click");
-  taskbox5 = new GCheckbox(this, 140, 500, 300, 20);
+  taskbox5 = new GCheckbox(this, 140, 550, 300, 20);
   taskbox5.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox5.setText("Task 5");
   taskbox5.setOpaque(false);
   taskbox5.addEventHandler(this, "taskbox5_click");
-  taskbox6 = new GCheckbox(this, 510, 300, 300, 20);
+  taskbox6 = new GCheckbox(this, 510, 350, 300, 20);
   taskbox6.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox6.setText("Task 6");
   taskbox6.setOpaque(false);
   taskbox6.addEventHandler(this, "taskbox6_click");
-  taskbox7 = new GCheckbox(this, 510, 350, 300, 20);
+  taskbox7 = new GCheckbox(this, 510, 400, 300, 20);
   taskbox7.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox7.setText("Task 7");
   taskbox7.setOpaque(false);
   taskbox7.addEventHandler(this, "taskbox7_click");
-  taskbox8 = new GCheckbox(this, 510, 400, 300, 20);
+  taskbox8 = new GCheckbox(this, 510, 450, 300, 20);
   taskbox8.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox8.setText("Task 8");
   taskbox8.setOpaque(false);
   taskbox8.addEventHandler(this, "taskbox8_click");
-  taskbox9 = new GCheckbox(this, 510, 450, 300, 20);
+  taskbox9 = new GCheckbox(this, 510, 500, 300, 20);
   taskbox9.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox9.setText("Task 9");
   taskbox9.setOpaque(false);
   taskbox9.addEventHandler(this, "taskbox9_click");
-  taskbox10 = new GCheckbox(this, 510, 500, 300, 20);
+  taskbox10 = new GCheckbox(this, 510, 550, 300, 20);
   taskbox10.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox10.setText("Task 10");
   taskbox10.setOpaque(false);
@@ -365,7 +361,7 @@ public void createGUI(){
   addTaskButton.setText("+");
   addTaskButton.setFont(font1);
   addTaskButton.addEventHandler(this, "addTaskButton_click");
-  extraSpaceButton = new GButton(this, 300, 550, 200, 30);
+  extraSpaceButton = new GButton(this, 300, 600, 200, 30);
   extraSpaceButton.setText("Add Extra Space");
   extraSpaceButton.addEventHandler(this, "extraSpaceButton_click");
   extraSpaceButton.setFont(font1);
@@ -373,10 +369,6 @@ public void createGUI(){
   clearButton.setText("Clear Tasks"); 
   clearButton.setFont(font1.deriveFont(12f));
   clearButton.addEventHandler(this, "clearButtonClicked"); 
-  settingButton = new GButton(this, 700, 750, 80, 30);
-  settingButton.setText("Settings");
-  settingButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
-  settingButton.addEventHandler(this, "settingButton_click");
   window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 400, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
@@ -478,7 +470,6 @@ GCheckbox extraTask5;
 GCheckbox extraTask6;
 GButton extraSpaceButton; 
 GButton clearButton; 
-GButton settingButton; 
 GWindow window1;
 GLabel settingLabel; 
 GButton colourBtn_pink; 
