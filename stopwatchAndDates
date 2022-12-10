@@ -1,4 +1,3 @@
-
 void displayDate() {
   int d = day();
   int m = month();
@@ -25,43 +24,26 @@ void displayStopwatch() {
   }
   
   if (start) {
-    h_start = hour();
-    m_start = minute();
-    s_start = second();
+    sElapsed = 0;
+    mElapsed = 0;
+    hElapsed = 0;
   }
   
-  h_current = hour();
-  m_current = minute();
-  s_current = second();
-  
-  hElapsed = h_current - h_start;
-  mElapsed = m_current - m_start;
-  if (mElapsed < 0) {
-    hElapsed -= 1;
-    mElapsed += 60;
-  }
-  sElapsed = s_current - s_start;
-  if (sElapsed < 0) {
-    mElapsed -= 1;
-    sElapsed += 60;
+  if (!pause) {
+    sElapsed += 1;
+    if (sElapsed >= 60) {
+      mElapsed += 1;
+      sElapsed = 0;
+    }
+    if (mElapsed >= 60) {
+      hElapsed += 1;
+      mElapsed = 0;
+    }
   }
   
-  if (start != false) {
-    sElapsed -= sPaused;
-      if (sElapsed < 0) {
-        mElapsed -= 1;
-        sElapsed += 60;
-      }
-      mElapsed -= mPaused;
-      if (mElapsed < 0) {
-        hElapsed -= 1;
-        mElapsed += 60;
-      }
-      hElapsed -= hPaused;
-  }
-    
   for (int m:studyBreaks) {
     if (mElapsed == m && sElapsed == 0) {
+      fill(0);
       text("Study Break", width/2, 150);
     }
   }
@@ -70,7 +52,7 @@ void displayStopwatch() {
   rect(100, 50, 600, 75, 25, 25, 25, 25);
   noFill();
   rect(75, 40, 625, 85, 25, 25, 25, 25);
-
+  
   textSize(30);
   textAlign(CENTER);
   fill(0);
