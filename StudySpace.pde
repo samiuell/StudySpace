@@ -37,7 +37,8 @@ int pBarLength = 300;
 
 PImage logo; 
 
-Font smallFont = new Font("Serif", Font.BOLD, 18); 
+Font font1;
+PFont font2;
 
 //colour themes
 color textColour = color(0);
@@ -49,6 +50,9 @@ color themeColour = pink;
 boolean darkMode = false;
 
 void setup() {
+    importFont();
+    font2 = createFont("Lexend-Regular.ttf",25);
+    textFont(font2);
     size(800,800);
     //GUI
     createGUI();
@@ -92,7 +96,6 @@ void setup() {
 
 
 void draw() {
-  importFont();
   image(logo, 303, 50, 195, 200); 
   //Main screen
   if(screen == "main") {
@@ -142,7 +145,6 @@ void displayQuote() {
     //Display quote
   fill(0); 
   textAlign(CENTER);
-  textSize(24);
   text(quote, width/2, height/2);   
 }
 
@@ -248,8 +250,7 @@ void screenshot() {
 
 void importFont(){
   try {
-      //font1 = Font.createFont(Font.TRUETYPE_FONT, new File("Fonts\\custom_font.ttf")).deriveFont(12f);
-      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\lexend-main\\lexend-main\\fonts\\lexend\\ttf\\Lexend-Regular.ttf")).deriveFont(18f);
+      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\StudySpace-main\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
       GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
       ge.registerFont(font1);
   } catch (IOException e) {
