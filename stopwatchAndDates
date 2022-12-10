@@ -1,5 +1,5 @@
 //Stopwatch
-int studyBreak = 1;
+int studyBreak;
 ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
 boolean pause = true;
 boolean start = true;
@@ -28,6 +28,11 @@ void displayStopwatch() {
     noStroke();
     rect(25,25,750,750,25,25,25,25);
     textColour = color(0);
+  }
+  
+  studyBreak = int(studyBreakInput.getText());
+  for (int i = studyBreak; i < 60; i += studyBreak) {
+    studyBreaks.add(i);
   }
   
   if (start) {
