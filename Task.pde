@@ -1,3 +1,9 @@
+//Task boxes
+int taskNumber = 1; 
+boolean extraSpace = false; 
+Task[] tasks = new Task[17]; 
+GCheckbox[] taskBoxes = new GCheckbox[17];
+
 class Task {
     String name;
     boolean done;
