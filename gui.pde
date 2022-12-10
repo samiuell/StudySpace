@@ -16,9 +16,6 @@
 
 public void mainScreenClicked(GButton source, GEvent event) { //_CODE_:mainScreen:980433:
   screen = "main"; 
-  h_start = hour();
-  m_start = minute();
-  s_start = second();
 } //_CODE_:mainScreen:980433:
 
 
