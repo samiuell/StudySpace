@@ -158,129 +158,41 @@ public void taskInput_change(GTextField source, GEvent event) { //_CODE_:taskInp
 
 public void addTaskButton_click(GButton source, GEvent event) { //_CODE_:addTaskButton:276838:
   String task = taskInput.getText();
-  if (taskNumber == 1) {
-    taskbox1.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[1].name = task;
-  }
-  else if (taskNumber == 2) {
-    taskbox2.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[2].name = task; 
-  }
-  else if (taskNumber == 3) {
-    taskbox3.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[3].name = task; 
-  }
-  else if (taskNumber == 4) {
-    taskbox4.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[4].name = task; 
-  }
-  else if (taskNumber == 5) {
-    taskbox5.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[5].name = task; 
-  }
-  else if (taskNumber == 6) {
-    taskbox6.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[6].name = task;
-  }
-  else if (taskNumber == 7) {
-    taskbox7.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[7].name = task;
-  }
-  else if (taskNumber == 8) {
-    taskbox8.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[8].name = task; 
-  }
-  else if (taskNumber == 9) {
-    taskbox9.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[9].name = task; 
-  }
-  else if (taskNumber == 10) {
-    taskbox10.setText(task);
-    if (extraSpace) {
-      taskNumber = 11;
-    }
-    taskInput.setText("");
-    tasks[10].name = task; 
-  }
-  else if (taskNumber == 11) {
-    extraTask1.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[11].name = task; 
-  }
-  else if (taskNumber == 12) {
-    extraTask2.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[12].name = task; 
-  }
-  else if (taskNumber == 13) {
-    extraTask3.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[13].name = task; 
-  }
-  else if (taskNumber == 14) {
-    extraTask4.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[14].name = task; 
-  }
-  else if (taskNumber == 15) {
-    extraTask5.setText(task);
-    taskNumber += 1;
-    taskInput.setText("");
-    tasks[15].name = task; 
-  }
-  else if(taskNumber == 16) {
-    extraTask6.setText(task); 
-    taskNumber += 1; 
-    taskInput.setText(""); 
-    tasks[16].name = task; 
-  }
+  taskBoxes[taskNumber].setText(task);
+  taskInput.setText("");
+  tasks[taskNumber].name = task;
+  taskNumber+=1;
 } //_CODE_:addTaskButton:276838:
 
 
 public void extraTask1_click(GCheckbox source, GEvent event) { //_CODE_:extraTask1:528179:
-  tasks[11].done = true; 
+  if(tasks[11].done) tasks[11].done=false;
+  else tasks[11].done = true; 
 } //_CODE_:extraTask1:528179:
 
 public void extraTask2_click(GCheckbox source, GEvent event) { //_CODE_:extraTask2:231896:
-  tasks[12].done = true;
+  if(tasks[12].done) tasks[12].done=false;
+  else tasks[12].done = true; 
 } //_CODE_:extraTask2:231896:
 
 public void extraTask3_click(GCheckbox source, GEvent event) { //_CODE_:extraTask3:336006:
-  tasks[13].done = true; 
+  if(tasks[13].done) tasks[13].done=false;
+  else tasks[13].done = true; 
 } //_CODE_:extraTask3:336006:
 
 public void extraTask4_click(GCheckbox source, GEvent event) { //_CODE_:extraTask4:932629:
-  tasks[14].done = true; 
+  if(tasks[14].done) tasks[14].done=false;
+  else tasks[14].done = true; 
 } //_CODE_:extraTask4:932629:
 
 public void extraTask5_click(GCheckbox source, GEvent event) { //_CODE_:extraTask5:337470:
-  tasks[15].done = true; 
+  if(tasks[15].done) tasks[15].done=false;
+  else tasks[15].done = true; 
 } //_CODE_:extraTask5:337470:
 
-public void extraTask6_click(GCheckbox source, GEvent event) {
-  tasks[16].done = true;  
+public void extraTask6_click(GCheckbox source, GEvent event){
+  if(tasks[16].done) tasks[16].done=false;
+  else tasks[16].done=true;
 }
 
 
@@ -316,9 +228,24 @@ public void extraSpaceButton_click(GButton source, GEvent event) { //_CODE_:extr
   extraTask6.setOpaque(false); 
   extraTask6.addEventHandler(this, "extraTask6_click"); 
   
-  
   if (taskNumber == 10) {
     taskNumber = 11;
+  }
+  
+  taskBoxes[11] = extraTask1;
+  taskBoxes[12] = extraTask2;
+  taskBoxes[13] = extraTask3;
+  taskBoxes[14] = extraTask4;
+  taskBoxes[15] = extraTask5;
+  taskBoxes[16] = extraTask6;
+
+  if (taskNumber == 10) {
+    taskNumber = 11;
+  }
+  
+  for(int i = 11; i <= 16; i++){
+    taskBoxes[i].setFont(font1);
+    taskBoxes[i].setText("__________");
   }
   extraSpace = true;
   extraSpaceButton.setVisible(false);
@@ -332,49 +259,19 @@ public void clearButtonClicked(GButton source, GEvent event) {
 
 void clearTasks(){
   taskNumber=1;
-  taskbox1.setText("Task 1");
-  taskbox2.setText("Task 2");
-  taskbox3.setText("Task 3");
-  taskbox4.setText("Task 4");
-  taskbox5.setText("Task 5");
-  taskbox6.setText("Task 6");
-  taskbox7.setText("Task 7");
-  taskbox8.setText("Task 8");
-  taskbox9.setText("Task 9");
-  taskbox10.setText("Task 10");
-  taskbox1.setSelected(false);
-  taskbox2.setSelected(false);
-  taskbox3.setSelected(false);
-  taskbox4.setSelected(false);
-  taskbox5.setSelected(false);
-  taskbox6.setSelected(false);
-  taskbox7.setSelected(false);
-  taskbox8.setSelected(false);
-  taskbox9.setSelected(false);
-  taskbox10.setSelected(false);
+  for(int i = 1; i<=16;i++){
+    taskBoxes[i].setText("__________");
+    taskBoxes[i].setSelected(false);
+  }
+  
   if(extraSpace){
-    extraTask1.setText("Extra Task 1");
-    extraTask2.setText("Extra Task 2");
-    extraTask3.setText("Extra Task 3");
-    extraTask4.setText("Extra Task 4");
-    extraTask5.setText("Extra Task 5");
-    extraTask6.setText("Extra Task 6"); 
-    extraTask1.setSelected(false);
-    extraTask2.setSelected(false);
-    extraTask3.setSelected(false);
-    extraTask4.setSelected(false);
-    extraTask5.setSelected(false);  
-    extraTask6.setSelected(false); 
-    extraTask1.setVisible(false);
-    extraTask2.setVisible(false);
-    extraTask3.setVisible(false);
-    extraTask4.setVisible(false);
-    extraTask5.setVisible(false);
-    extraTask6.setVisible(false); 
+    for(int i = 11; i <= 16; i++){
+      taskBoxes[i].setVisible(false);
+    }
     extraSpace = false;
   }
-
-  for(int i = 0; i<16; i++){
+  
+  for(int i = 0; i<17; i++){
     tasks[i] = new Task();
   }
 
@@ -535,6 +432,22 @@ public void createGUI(){
   colourTheme.setText("Colour Theme");
   colourTheme.setOpaque(false);
   window1.loop();
+  
+  taskBoxes[1] = taskbox1;
+  taskBoxes[2] = taskbox2;
+  taskBoxes[3] = taskbox3;
+  taskBoxes[4] = taskbox4;
+  taskBoxes[5] = taskbox5;
+  taskBoxes[6] = taskbox6;
+  taskBoxes[7] = taskbox7;
+  taskBoxes[8] = taskbox8;
+  taskBoxes[9] = taskbox9;
+  taskBoxes[10] = taskbox10;
+  for(int i = 1; i<=10;i++){
+    taskBoxes[i].setFont(font1);
+    taskBoxes[i].setText("__________");
+  }
+  
 }
 
 public void customGUI() {
