@@ -380,6 +380,42 @@ void clearTasks(){
 
 }
 
+public void settingButton_click(GButton source, GEvent event) { //_CODE_:settingButton:586562:
+  println("settingButton - GButton >> GEvent." + event + " @ " + millis());
+} //_CODE_:settingButton:586562:
+
+synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:window1:804261:
+  appc.background(230);
+} //_CODE_:window1:804261:
+
+public void colourBtn_pink_click(GButton source, GEvent event) { //_CODE_:colourBtn_pink:321733:
+  themeColour = pink;
+} //_CODE_:colourBtn_pink:321733:
+
+public void colourBtn_blue_click(GButton source, GEvent event) { //_CODE_:colourBtn_blue:471544:
+  themeColour = blue;
+} //_CODE_:colourBtn_blue:471544:
+
+public void colourBtn_green_click(GButton source, GEvent event) { //_CODE_:colourBtn_green:920352:
+  themeColour = green;
+} //_CODE_:colourBtn_green:920352:
+
+public void colourBtn_yellow_click(GButton source, GEvent event) { //_CODE_:colourBtn_yellow:322768:
+  themeColour = yellow;
+} //_CODE_:colourBtn_yellow:322768:
+
+public void darkMode_click(GButton source, GEvent event) { //_CODE_:darkModeBtn:994179:
+  if (!darkMode) {
+    darkMode = true;
+    darkModeBtn.setText("Light Mode");
+  }
+  else { 
+    darkMode = false;
+    themeColour = pink;
+    darkModeBtn.setText("Dark Mode");
+  }
+} //_CODE_:darkModeBtn:994179:
+
 
 
 // Create all the GUI controls. 
@@ -464,6 +500,41 @@ public void createGUI(){
   clearButton = new GButton(this, 150, 245, 45, 40); 
   clearButton.setText("Clear Tasks"); 
   clearButton.addEventHandler(this, "clearButtonClicked"); 
+  settingButton = new GButton(this, 700, 750, 80, 30);
+  settingButton.setText("Settings");
+  settingButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  settingButton.addEventHandler(this, "settingButton_click");
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 400, JAVA2D);
+  window1.noLoop();
+  window1.setActionOnClose(G4P.KEEP_OPEN);
+  window1.addDrawHandler(this, "win_draw1");
+  settingLabel = new GLabel(window1, 150, 25, 100, 30);
+  settingLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  settingLabel.setText("Settings");
+  settingLabel.setOpaque(false);
+  colourBtn_pink = new GButton(window1, 20, 90, 70, 30);
+  colourBtn_pink.setText("Pink");
+  colourBtn_pink.setLocalColorScheme(GCScheme.RED_SCHEME);
+  colourBtn_pink.addEventHandler(this, "colourBtn_pink_click");
+  colourBtn_blue = new GButton(window1, 20, 140, 70, 30);
+  colourBtn_blue.setText("Blue");
+  colourBtn_blue.addEventHandler(this, "colourBtn_blue_click");
+  colourBtn_green = new GButton(window1, 20, 190, 70, 30);
+  colourBtn_green.setText("Green");
+  colourBtn_green.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  colourBtn_green.addEventHandler(this, "colourBtn_green_click");
+  colourBtn_yellow = new GButton(window1, 20, 240, 70, 30);
+  colourBtn_yellow.setText("Yellow");
+  colourBtn_yellow.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  colourBtn_yellow.addEventHandler(this, "colourBtn_yellow_click");
+  darkModeBtn = new GButton(window1, 20, 290, 70, 30);
+  darkModeBtn.setText("Dark Mode");
+  darkModeBtn.addEventHandler(this, "darkMode_click");
+  colourTheme = new GLabel(window1, 5, 60, 100, 20);
+  colourTheme.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  colourTheme.setText("Colour Theme");
+  colourTheme.setOpaque(false);
+  window1.loop();
 }
 
 public void customGUI() {
@@ -518,3 +589,12 @@ GCheckbox extraTask5;
 GCheckbox extraTask6;
 GButton extraSpaceButton; 
 GButton clearButton; 
+GButton settingButton; 
+GWindow window1;
+GLabel settingLabel; 
+GButton colourBtn_pink; 
+GButton colourBtn_blue; 
+GButton colourBtn_green; 
+GButton colourBtn_yellow; 
+GButton darkModeBtn; 
+GLabel colourTheme; 
