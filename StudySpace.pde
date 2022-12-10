@@ -18,15 +18,11 @@ String chosenSong;
 boolean musicPaused = false; 
 
 //Stopwatch
-int h_start, m_start, s_start;
-int h_pause, m_pause, s_pause;
-int h_current, m_current, s_current;
 int studyBreak = 1;
 ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
-boolean pause;
+boolean pause = true;
 boolean start = true;
 int hElapsed, mElapsed, sElapsed;
-int hPaused, mPaused, sPaused;
 
 //Task boxes
 int taskNumber = 1; 
@@ -81,6 +77,14 @@ void setup() {
     logo = loadImage("logo.png"); 
 
     displayQuote(); 
+    
+    //stopwatch
+    sElapsed = 0;
+    mElapsed = 0;
+    hElapsed = 0;
+    for (int i = studyBreak; i < 60; i += studyBreak) {
+      studyBreaks.add(i);
+    }
     
     //Adding initial tasks
     for(int i = 0; i < 17; i++) {
@@ -147,71 +151,6 @@ void displayQuote() {
   textAlign(CENTER);
   text(quote, width/2, height/2);   
 }
-
-
-void displayDate() {
-  int d = day();
-  int m = month();
-  int y = year();
-  
-  textSize(15);
-  textAlign(CENTER);
-  fill(0);
-  text(m+"/"+d+"/"+y, 600, 100);
-}
-
-
-void displayStopwatch() {  
-  background(220);
-  
-  if (start) {
-    h_start = hour();
-    m_start = minute();
-    s_start = second();
-  }
-  
-  h_current = hour();
-  m_current = minute();
-  s_current = second();
-  
-  hElapsed = h_current - h_start;
-  mElapsed = m_current - m_start;
-  if (mElapsed < 0) {
-    hElapsed -= 1;
-    mElapsed += 60;
-  }
-  sElapsed = s_current - s_start;
-  if (sElapsed < 0) {
-    mElapsed -= 1;
-    sElapsed += 60;
-  }
-  
-  if (start != false) {
-    sElapsed -= sPaused;
-      if (sElapsed < 0) {
-        mElapsed -= 1;
-        sElapsed += 60;
-      }
-      mElapsed -= mPaused;
-      if (mElapsed < 0) {
-        hElapsed -= 1;
-        mElapsed += 60;
-      }
-      hElapsed -= hPaused;
-  }
-    
-  for (int m:studyBreaks) {
-    if (mElapsed == m && sElapsed == 0) {
-      text("Study Break", width/2, 150);
-    }
-  }
-
-  textSize(30);
-  textAlign(CENTER);
-  fill(0);
-  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 100);
-}
-
 
 void updateProgressBar(){
   fill(255);
