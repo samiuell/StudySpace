@@ -36,6 +36,15 @@ PImage logo;
 
 Font smallFont = new Font("Serif", Font.BOLD, 18); 
 
+//colour themes
+color textColour = color(0);
+color pink = color(255, 200, 200);
+color blue = color(200, 200, 255);
+color green = color(200, 255, 200);
+color yellow = color(255, 255, 100);
+color themeColour = pink;
+boolean darkMode = false;
+
 void setup() {
     size(800,800);
     //GUI
