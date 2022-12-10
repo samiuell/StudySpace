@@ -1,10 +1,3 @@
-//Stopwatch
-int studyBreak;
-ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
-boolean pause = true;
-boolean start = true;
-int hElapsed, mElapsed, sElapsed;
-
 void displayDate() {
   int d = day();
   int m = month();
@@ -13,7 +6,7 @@ void displayDate() {
   textSize(15);
   textAlign(CENTER);
   fill(textColour);
-  text(m+"/"+d+"/"+y, 600, 100);
+  text(m+"/"+d+"/"+y, 600, 150);
 }
 
 void displayStopwatch() {  
@@ -28,11 +21,6 @@ void displayStopwatch() {
     noStroke();
     rect(25,25,750,750,25,25,25,25);
     textColour = color(0);
-  }
-  
-  studyBreak = int(studyBreakInput.getText());
-  for (int i = studyBreak; i < 60; i += studyBreak) {
-    studyBreaks.add(i);
   }
   
   if (start) {
@@ -56,17 +44,17 @@ void displayStopwatch() {
   for (int m:studyBreaks) {
     if (mElapsed == m && sElapsed == 0) {
       fill(0);
-      text("Study Break", width/2, 150);
+      text("Study Break", width/2, 200);
     }
   }
   
   fill(255);
-  rect(100, 62, 600, 58, 25, 25, 25, 25);
+  rect(100, 112, 610, 75, 25, 25, 25, 25);
   noFill();
   rect(75, 40, 625, 85, 25, 25, 25, 25);
   
   textSize(30);
   textAlign(CENTER);
   fill(0);
-  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 100);
+  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 150);
 }
