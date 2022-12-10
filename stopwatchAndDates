@@ -1,3 +1,10 @@
+//Stopwatch
+int studyBreak = 1;
+ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
+boolean pause = true;
+boolean start = true;
+int hElapsed, mElapsed, sElapsed;
+
 void displayDate() {
   int d = day();
   int m = month();
@@ -13,14 +20,6 @@ void displayStopwatch() {
   if (darkMode) {
     fill(50);
     rect(0,0,width,height);
-    for(int i = 1; i <= 10; i++){
-      taskBoxes[i].setLocalColorScheme(255);
-    }
-    if(extraSpace){
-      for(int i = 11; i<=16;i++){
-        taskBoxes[i].setLocalColorScheme(255);
-      }
-    }
   }
   else {
     fill(255);
@@ -28,14 +27,6 @@ void displayStopwatch() {
     fill(themeColour);
     noStroke();
     rect(25,25,750,750,25,25,25,25);
-    for(int i = 1; i <= 10; i++){
-      taskBoxes[i].setLocalColor(2, color(0));
-    }
-    if(extraSpace){
-      for(int i = 11; i<=16;i++){
-        taskBoxes[i].setLocalColor(2, color(0));
-      }
-    }
     textColour = color(0);
   }
   
