@@ -29,7 +29,7 @@ public void playMusicPressed(GButton source, GEvent event) { //_CODE_:playMusic:
     else
       classical.play();
     
-    playMusic.setText("Pause Music"); 
+    playMusic.setText("Pause"); 
     musicPaused = true; 
   }
   
@@ -38,7 +38,7 @@ public void playMusicPressed(GButton source, GEvent event) { //_CODE_:playMusic:
     classical.pause(); 
     lofi.pause(); 
     brownNoise.pause(); 
-    playMusic.setText("Play Music"); 
+    playMusic.setText("Play"); 
     musicPaused = false; 
     
   }
@@ -301,15 +301,26 @@ public void darkMode_click(GButton source, GEvent event) { //_CODE_:darkModeBtn:
 
 public void classicalBtnClicked(GButton source, GEvent event) { 
   chosenSong = "classical";   
-  
+  pauseMusic(); 
+  classical.play(); 
+  playMusic.setText("Pause"); 
+  musicPaused = true; 
 }
 
 public void lofiBtnClicked(GButton source, GEvent event) {
   chosenSong = "lofi";  
+  pauseMusic(); 
+  lofi.play(); 
+  playMusic.setText("Pause"); 
+  musicPaused = true; 
 }
 
 public void brownNoiseBtnClicked(GButton source, GEvent event) {
   chosenSong = "brownNoise"; 
+  pauseMusic(); 
+  brownNoise.play(); 
+  playMusic.setText("Pause"); 
+  musicPaused = true; 
 }
 
 void pauseMusic() {
