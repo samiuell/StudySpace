@@ -3,6 +3,9 @@ String[] quotes;
 
 //Getting random quote from txt file and displaying
 void displayQuote() {
+  fill(117, 217, 152); 
+  noStroke(); 
+  rect(0, 300, width, 250); 
   quotes = loadStrings("quotes.txt");
   int quoteIndex = int(random(0, quotes.length));
 
