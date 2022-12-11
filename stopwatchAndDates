@@ -1,3 +1,10 @@
+//Stopwatch
+int studyBreak;
+ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
+boolean pause = true;
+boolean start = true;
+int hElapsed, mElapsed, sElapsed;
+
 void displayDate() {
   int d = day();
   int m = month();
@@ -49,7 +56,7 @@ void displayStopwatch() {
   }
   
   fill(255);
-  rect(100, 100, 610, 100, 25, 25, 25, 25);
+  rect(90, 100, 610, 110, 25, 25, 25, 25);
   noFill();
   rect(75, 40, 625, 85, 25, 25, 25, 25);
   
