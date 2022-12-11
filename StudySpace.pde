@@ -51,7 +51,6 @@ void setup() {
     //GUI
     createGUI();
    
-    playMusic.setVisible(false); 
     stopwatchBtn.setVisible(false); 
     taskbox1.setVisible(false); 
     taskbox2.setVisible(false); 
@@ -104,7 +103,6 @@ void draw() {
     
     //GUI
     mainScreen.setVisible(false); 
-    playMusic.setVisible(true); 
     stopwatchBtn.setVisible(true); 
     taskbox1.setVisible(true); 
     taskbox2.setVisible(true); 
