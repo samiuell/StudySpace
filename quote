@@ -15,5 +15,6 @@ void displayQuote() {
     //Display quote
   fill(0); 
   textAlign(CENTER);
+  textSize(24); 
   text(quote, width/2, height/2);   
 }
