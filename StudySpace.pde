@@ -103,6 +103,7 @@ void draw() {
     displayStopwatch();
     displayDate();
     updateProgressBar();
+    image(logo, width/2-100, height/2-20, 195, 150); 
   }
 }
 
