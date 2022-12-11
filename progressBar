@@ -16,7 +16,10 @@ void updateProgressBar(){
   }
   if(total!=0){
     float comp = pBarLength*numComp/total;
-    fill(0);
+    if(darkMode)
+      fill(117, 217, 152);
+    else
+      fill(0); 
     rect(250,225,comp,20);
   }
 }
