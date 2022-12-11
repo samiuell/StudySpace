@@ -3,6 +3,10 @@ import g4p_controls.*;
 import java.awt.*; 
 PImage screenshot;
 
+Task[] tasks = new Task[17]; 
+
+GCheckbox[] taskBoxes = new GCheckbox[17];
+
 String screen = ""; 
 
 //Song files
@@ -12,8 +16,20 @@ SoundFile brownNoise;
 String chosenSong;
 boolean musicPaused = false; 
 
-//display
+//Stopwatch
+int studyBreak = 1;
+ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
+boolean pause = true;
+boolean start = true;
+int hElapsed, mElapsed, sElapsed;
+
+//Task boxes
+int taskNumber = 1; 
+boolean extraSpace = false; 
+
+
 PImage logo; 
+
 Font font1;
 PFont font2;
 
@@ -27,59 +43,68 @@ color themeColour = green;
 boolean darkMode = false;
 
 void setup() {
-  importFont();
-  font2 = createFont("Lexend-Regular.ttf",25);
-  textFont(font2);
-  size(800,800);
-  //GUI
-  createGUI();
- 
-  playMusic.setVisible(false); 
-  stopwatchBtn.setVisible(false); 
-  taskbox1.setVisible(false); 
-  taskbox2.setVisible(false); 
-  taskbox3.setVisible(false); 
-  taskbox4.setVisible(false); 
-  taskbox5.setVisible(false); 
-  taskbox6.setVisible(false); 
-  taskbox7.setVisible(false); 
-  taskbox8.setVisible(false); 
-  taskbox9.setVisible(false); 
-  taskbox10.setVisible(false); 
-  taskInput.setVisible(false); 
-  addTaskButton.setVisible(false);
-  extraSpaceButton.setVisible(false);
-  clearButton.setVisible(false); 
-  screenshotButton.setVisible(false); 
-  
-  background(255);
-  
-  //Logo
-  logo = loadImage("logo.png"); 
+    
+    importFont();
+    font2 = createFont("Lexend-Regular.ttf",25);
+    textFont(font2);
+    size(800,800);
+    //GUI
+    createGUI();
+   
+    playMusic.setVisible(false); 
+    stopwatchBtn.setVisible(false); 
+    taskbox1.setVisible(false); 
+    taskbox2.setVisible(false); 
+    taskbox3.setVisible(false); 
+    taskbox4.setVisible(false); 
+    taskbox5.setVisible(false); 
+    taskbox6.setVisible(false); 
+    taskbox7.setVisible(false); 
+    taskbox8.setVisible(false); 
+    taskbox9.setVisible(false); 
+    taskbox10.setVisible(false); 
+    taskInput.setVisible(false); 
+    addTaskButton.setVisible(false);
+    extraSpaceButton.setVisible(false);
+    clearButton.setVisible(false); 
+    screenshotButton.setVisible(false); 
+    
+    background(255);
+    fill(117, 217, 152); 
+    noStroke(); 
+    rect(0, 300, width, 250); 
+    
+    //Logo
+    logo = loadImage("logo.png"); 
 
-  displayQuote(); 
+    displayQuote(); 
+    
+    //stopwatch
+    sElapsed = 0;
+    mElapsed = 0;
+    hElapsed = 0;
+    for (int i = studyBreak; i < 60; i += studyBreak) {
+      studyBreaks.add(i);
+    }
+    
+    //Adding initial tasks
+    for(int i = 0; i < 17; i++) {
+      tasks[i] = new Task();
+    }
   
-  //stopwatch
-  sElapsed = 0;
-  mElapsed = 0;
-  hElapsed = 0;
-  
-  //Adding initial tasks
-  for(int i = 0; i < 17; i++) {
-    tasks[i] = new Task();
-  }
+    //Loading music 
+    classical = new SoundFile(this, "wavFiles/chopinNoc9.wav");
+    lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
+    brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
 
-  //Loading music 
-  classical = new SoundFile(this, "wavFiles/chopinNoc9.wav");
-  lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
-  brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
 }
 
+
 void draw() {
-  image(logo, 303, 50, 195, 200); 
-  
+  image(logo, 290, 50, 220, 200); 
   //Main screen
   if(screen == "main") {
+    
     //GUI
     mainScreen.setVisible(false); 
     playMusic.setVisible(true); 
@@ -102,11 +127,14 @@ void draw() {
     if(extraSpace != true) 
       extraSpaceButton.setVisible(true); 
 
+    
     displayStopwatch();
     displayDate();
     updateProgressBar();
+
   }
 }
+
 
 void screenshot() {
   try {
@@ -121,9 +149,10 @@ void screenshot() {
   } catch (AWTException e) { }
 }
 
+
 void importFont(){
   try {
-      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\kims8448\\OneDrive - Waterloo Region District School Board\\Desktop\\Practices\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
+      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\samri\\OneDrive\\Desktop\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
       GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
       ge.registerFont(font1);
   } catch (IOException e) {
