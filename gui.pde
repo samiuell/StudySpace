@@ -313,11 +313,11 @@ public void createGUI(){
   mainScreen.setFont(font1);
   mainScreen.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   mainScreen.addEventHandler(this, "mainScreenClicked");
-  playMusic = new GButton(this, 680, 30, 80, 30);
+  playMusic = new GButton(this, 680, 50, 80, 30);
   playMusic.setText("Play Music");
   playMusic.setFont(font1.deriveFont(13f));
   playMusic.addEventHandler(this, "playMusicPressed");
-  screenshotButton = new GButton(this, 50, 30, 80, 30); 
+  screenshotButton = new GButton(this, 50, 50, 80, 30); 
   screenshotButton.setText("Screenshot"); 
   screenshotButton.setFont(font1.deriveFont(13f));
   screenshotButton.addEventHandler(this, "screenshotPressed"); 
