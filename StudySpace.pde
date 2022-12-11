@@ -70,9 +70,6 @@ void setup() {
     screenshotButton.setVisible(false); 
     
     background(255);
-    fill(117, 217, 152); 
-    noStroke(); 
-    rect(0, 300, width, 250); 
     
     //Logo
     logo = loadImage("logo.png"); 
