@@ -16,13 +16,6 @@ SoundFile brownNoise;
 String chosenSong;
 boolean musicPaused = false; 
 
-//Stopwatch
-int studyBreak = 1;
-ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
-boolean pause = true;
-boolean start = true;
-int hElapsed, mElapsed, sElapsed;
-
 //Task boxes
 int taskNumber = 1; 
 boolean extraSpace = false; 
