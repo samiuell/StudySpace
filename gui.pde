@@ -248,29 +248,54 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 
 public void colourBtn_pink_click(GButton source, GEvent event) { //_CODE_:colourBtn_pink:321733:
   themeColour = pink;
+  stopwatchBtn.setLocalColorScheme(GCScheme.RED_SCHEME);
+  addTaskButton.setLocalColorScheme(GCScheme.RED_SCHEME);
+  clearButton.setLocalColorScheme(GCScheme.RED_SCHEME);
+  extraSpaceButton.setLocalColorScheme(GCScheme.RED_SCHEME);
+  screenshotButton.setLocalColorScheme(GCScheme.RED_SCHEME);
 } //_CODE_:colourBtn_pink:321733:
 
 public void colourBtn_blue_click(GButton source, GEvent event) { //_CODE_:colourBtn_blue:471544:
   themeColour = blue;
+  stopwatchBtn.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  addTaskButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  clearButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  extraSpaceButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  screenshotButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
 } //_CODE_:colourBtn_blue:471544:
 
 public void colourBtn_green_click(GButton source, GEvent event) { //_CODE_:colourBtn_green:920352:
   themeColour = green;
+  stopwatchBtn.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  addTaskButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  clearButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  extraSpaceButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
+  screenshotButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
 } //_CODE_:colourBtn_green:920352:
 
 public void colourBtn_yellow_click(GButton source, GEvent event) { //_CODE_:colourBtn_yellow:322768:
   themeColour = yellow;
+  stopwatchBtn.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  addTaskButton.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  clearButton.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  extraSpaceButton.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
+  screenshotButton.setLocalColorScheme(GCScheme.YELLOW_SCHEME);
 } //_CODE_:colourBtn_yellow:322768:
 
 public void darkMode_click(GButton source, GEvent event) { //_CODE_:darkModeBtn:994179:
   if (!darkMode) {
     darkMode = true;
     darkModeBtn.setText("Light Mode");
+    stopwatchBtn.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+    addTaskButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+    clearButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+    extraSpaceButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+    screenshotButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
   }
   else { 
     darkMode = false;
-    themeColour = pink;
     darkModeBtn.setText("Dark Mode");
+    colourBtn_green_click(colourBtn_green, event);
   }
 } //_CODE_:darkModeBtn:994179:
 
@@ -317,12 +342,12 @@ public void createGUI(){
   screenshotButton.setText("Screenshot"); 
   screenshotButton.setFont(font1.deriveFont(13f));
   screenshotButton.addEventHandler(this, "screenshotPressed"); 
-  screenshotButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  screenshotButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   stopwatchBtn = new GButton(this, 360, 170, 80, 28);
   stopwatchBtn.setText("Start");
   stopwatchBtn.setFont(font1);
   stopwatchBtn.addEventHandler(this, "stopwatchBtn_click");
-  stopwatchBtn.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  stopwatchBtn.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   taskbox1 = new GCheckbox(this, 140, 350, 300, 20);
   taskbox1.setIconAlign(GAlign.LEFT, GAlign.MIDDLE);
   taskbox1.setText("Task 1");
@@ -381,17 +406,17 @@ public void createGUI(){
   addTaskButton.setText("+");
   addTaskButton.setFont(font1);
   addTaskButton.addEventHandler(this, "addTaskButton_click");
-  addTaskButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  addTaskButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   extraSpaceButton = new GButton(this, 298, 600, 200, 30);
   extraSpaceButton.setText("Add Extra Space");
   extraSpaceButton.addEventHandler(this, "extraSpaceButton_click");
   extraSpaceButton.setFont(font1);
-  extraSpaceButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  extraSpaceButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   clearButton = new GButton(this, 150, 275, 100, 40); 
   clearButton.setText("Clear Tasks"); 
   clearButton.setFont(font1.deriveFont(12f));
   clearButton.addEventHandler(this, "clearButtonClicked"); 
-  clearButton.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  clearButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 400, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
