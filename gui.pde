@@ -308,10 +308,10 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  mainScreen = new GButton(this, 365, 600, 100, 50);
+  mainScreen = new GButton(this, 340, 600, 120, 50);
   mainScreen.setText("Main Screen");
   mainScreen.setFont(font1);
-  mainScreen.setLocalColorScheme(GCScheme.PURPLE_SCHEME);
+  mainScreen.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   mainScreen.addEventHandler(this, "mainScreenClicked");
   playMusic = new GButton(this, 680, 30, 80, 30);
   playMusic.setText("Play Music");
