@@ -3,10 +3,6 @@ import g4p_controls.*;
 import java.awt.*; 
 PImage screenshot;
 
-Task[] tasks = new Task[17]; 
-
-GCheckbox[] taskBoxes = new GCheckbox[17];
-
 String screen = ""; 
 
 //Song files
@@ -16,13 +12,8 @@ SoundFile brownNoise;
 String chosenSong;
 boolean musicPaused = false; 
 
-//Task boxes
-int taskNumber = 1; 
-boolean extraSpace = false; 
-
-
+//display
 PImage logo; 
-
 Font font1;
 PFont font2;
 
@@ -36,64 +27,58 @@ color themeColour = green;
 boolean darkMode = false;
 
 void setup() {
-    
-    importFont();
-    font2 = createFont("Lexend-Regular.ttf",25);
-    textFont(font2);
-    size(800,800);
-    //GUI
-    createGUI();
-   
-    stopwatchBtn.setVisible(false); 
-    taskbox1.setVisible(false); 
-    taskbox2.setVisible(false); 
-    taskbox3.setVisible(false); 
-    taskbox4.setVisible(false); 
-    taskbox5.setVisible(false); 
-    taskbox6.setVisible(false); 
-    taskbox7.setVisible(false); 
-    taskbox8.setVisible(false); 
-    taskbox9.setVisible(false); 
-    taskbox10.setVisible(false); 
-    taskInput.setVisible(false); 
-    addTaskButton.setVisible(false);
-    extraSpaceButton.setVisible(false);
-    clearButton.setVisible(false); 
-    screenshotButton.setVisible(false); 
-    
-    background(255);
-    
-    //Logo
-    logo = loadImage("logo.png"); 
-
-    displayQuote(); 
-    
-    //stopwatch
-    sElapsed = 0;
-    mElapsed = 0;
-    hElapsed = 0;
-    for (int i = studyBreak; i < 60; i += studyBreak) {
-      studyBreaks.add(i);
-    }
-    
-    //Adding initial tasks
-    for(int i = 0; i < 17; i++) {
-      tasks[i] = new Task();
-    }
+  importFont();
+  font2 = createFont("Lexend-Regular.ttf",25);
+  textFont(font2);
+  size(800,800);
+  //GUI
+  createGUI();
+ 
+  stopwatchBtn.setVisible(false); 
+  taskbox1.setVisible(false); 
+  taskbox2.setVisible(false); 
+  taskbox3.setVisible(false); 
+  taskbox4.setVisible(false); 
+  taskbox5.setVisible(false); 
+  taskbox6.setVisible(false); 
+  taskbox7.setVisible(false); 
+  taskbox8.setVisible(false); 
+  taskbox9.setVisible(false); 
+  taskbox10.setVisible(false); 
+  taskInput.setVisible(false); 
+  addTaskButton.setVisible(false);
+  extraSpaceButton.setVisible(false);
+  clearButton.setVisible(false); 
+  screenshotButton.setVisible(false); 
   
-    //Loading music 
-    classical = new SoundFile(this, "wavFiles/chopinNoc9.wav");
-    lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
-    brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
+  background(255);
+  
+  //Logo
+  logo = loadImage("logo.png"); 
 
+  displayQuote(); 
+  
+  //stopwatch
+  sElapsed = 0;
+  mElapsed = 0;
+  hElapsed = 0;
+  
+  //Adding initial tasks
+  for(int i = 0; i < 17; i++) {
+    tasks[i] = new Task();
+  }
+
+  //Loading music 
+  classical = new SoundFile(this, "wavFiles/chopinNoc9.wav");
+  lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
+  brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
 }
 
-
 void draw() {
-  image(logo, 290, 50, 220, 200); 
+  image(logo, 303, 50, 195, 200); 
+  
   //Main screen
   if(screen == "main") {
-    
     //GUI
     mainScreen.setVisible(false); 
     stopwatchBtn.setVisible(true); 
@@ -115,14 +100,11 @@ void draw() {
     if(extraSpace != true) 
       extraSpaceButton.setVisible(true); 
 
-    
     displayStopwatch();
     displayDate();
     updateProgressBar();
-
   }
 }
-
 
 void screenshot() {
   try {
@@ -136,7 +118,6 @@ void screenshot() {
     screenshot.save(dataPath("progress") + "/"+month+"."+day+"."+year()+".jpg");
   } catch (AWTException e) { }
 }
-
 
 void importFont(){
   try {
