@@ -17,18 +17,6 @@ void displayDate() {
 }
 
 void displayStopwatch() {  
-  if (darkMode) {
-    fill(50);
-    rect(0,0,width,height);
-  }
-  else {
-    fill(255);
-    rect(0, 0, width, height);
-    fill(themeColour);
-    noStroke();
-    rect(25,25,750,750,25,25,25,25);
-    textColour = color(0);
-  }
   
   if (start) {
     sElapsed = 0;
@@ -63,5 +51,16 @@ void displayStopwatch() {
   textSize(30);
   textAlign(CENTER);
   fill(0);
-  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 150);
+  
+  //Formatting time, optional
+  String mDisplay = "", sDisplay = "";
+  if(mElapsed < 10) mDisplay = "0"+str(mElapsed);
+  else mDisplay = str(mElapsed);
+  if(sElapsed < frames) sDisplay = "0"+str(sElapsed);
+  else sDisplay = str(sElapsed/10);
+  
+  
+  //text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 150);
+  
+  text(hElapsed+":"+mDisplay+":"+sDisplay, width/2, 150);
 }

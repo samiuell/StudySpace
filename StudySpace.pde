@@ -100,6 +100,7 @@ void draw() {
     if(extraSpace != true) 
       extraSpaceButton.setVisible(true); 
 
+    changeColourScheme();
     displayStopwatch();
     displayDate();
     updateProgressBar();
@@ -130,4 +131,50 @@ void importFont(){
   } catch(FontFormatException e) {
       e.printStackTrace();
   }
+}
+
+void changeColourScheme(){
+  if (darkMode) {
+    fill(50);
+    rect(0,0,width,height);
+    for(int i = 1; i <= 10; i++){
+      taskBoxes[i].setLocalColorScheme(255);
+    }
+    if(extraSpace){
+      for(int i = 11; i<=16;i++){
+        taskBoxes[i].setLocalColorScheme(255);
+      }
+    }
+    screenshotButton.setLocalColor(2,color(255));
+    mainScreen.setLocalColor(2,color(255));
+    playMusic.setLocalColor(2,color(255));
+    stopwatchBtn.setLocalColor(2,color(255));
+    clearButton.setLocalColor(2,color(255));
+    extraSpaceButton.setLocalColor(2,color(255));
+    addTaskButton.setLocalColor(2,color(255));
+  }
+  else {
+    fill(255);
+    rect(0, 0, width, height);
+    fill(themeColour);
+    noStroke();
+    rect(25,25,750,750,25,25,25,25);
+    for(int i = 1; i <= 10; i++){
+      taskBoxes[i].setLocalColor(2, color(0));
+    }
+    if(extraSpace){
+      for(int i = 11; i<=16;i++){
+        taskBoxes[i].setLocalColor(2, color(0));
+      }
+    }
+    textColour = color(0);
+    screenshotButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    mainScreen.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    playMusic.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    stopwatchBtn.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    clearButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    extraSpaceButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+    addTaskButton.setLocalColorScheme(GCScheme.BLUE_SCHEME);
+  }
+  
 }
