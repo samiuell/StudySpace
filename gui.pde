@@ -334,7 +334,7 @@ public void studyBreakInput_change(GTextField source, GEvent event) { //_CODE_:s
 
 public void studyBreakBtn_click(GButton source, GEvent event) {
   studyBreak = int(studyBreakInput.getText());
-  print(studyBreak);
+  //print(studyBreak);
 }
 
 // Create all the GUI controls. 
@@ -425,7 +425,7 @@ public void createGUI(){
   extraSpaceButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   clearButton = new GButton(this, 150, 275, 100, 40); 
   clearButton.setText("Clear Tasks"); 
-  clearButton.setFont(font1.deriveFont(12f));
+  clearButton.setFont(font1.deriveFont(15f));
   clearButton.addEventHandler(this, "clearButtonClicked"); 
   clearButton.setLocalColorScheme(GCScheme.GREEN_SCHEME);
   window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 400, JAVA2D);
