@@ -1,5 +1,5 @@
 //Stopwatch
-int studyBreak;
+int studyBreak = 30;
 ArrayList<Integer> studyBreaks = new ArrayList<Integer>();
 boolean pause = true;
 boolean start = true;
@@ -17,6 +17,23 @@ void displayDate() {
 }
 
 void displayStopwatch() {  
+  if (darkMode) {
+    fill(50);
+    rect(0,0,width,height);
+  }
+  else {
+    fill(255);
+    rect(0, 0, width, height);
+    fill(themeColour);
+    noStroke();
+    rect(25,25,750,750,25,25,25,25);
+    textColour = color(0);
+  }
+  
+  fill(255);
+  rect(90, 100, 610, 110, 25, 25, 25, 25);
+  noFill();
+  rect(75, 40, 625, 85, 25, 25, 25, 25);
   
   if (start) {
     sElapsed = 0;
@@ -37,30 +54,24 @@ void displayStopwatch() {
   }
   
   for (int m:studyBreaks) {
-    if (mElapsed == m && sElapsed == 0) {
-      fill(0);
-      text("Study Break", width/2, 200);
-    }
+    if (hElapsed > 0 || mElapsed > 0 || sElapsed > 0) {
+      if (studyBreak > 60) {
+        if ((hElapsed*60 + mElapsed) == m) {
+          if (sElapsed == 0) {
+            fill(0);
+            text("Study Break", width/2, 50);
+          }
+        }
+      }
+      else if (mElapsed == m && sElapsed == 0) {
+        fill(0);
+        text("Study Break", width/2, 50);
+      }
+    }   
   }
-  
-  fill(255);
-  rect(90, 100, 610, 110, 25, 25, 25, 25);
-  noFill();
-  rect(75, 40, 625, 85, 25, 25, 25, 25);
   
   textSize(30);
   textAlign(CENTER);
   fill(0);
-  
-  //Formatting time, optional
-  String mDisplay = "", sDisplay = "";
-  if(mElapsed < 10) mDisplay = "0"+str(mElapsed);
-  else mDisplay = str(mElapsed);
-  if(sElapsed < 10) sDisplay = "0"+str(sElapsed);
-  else sDisplay = str(sElapsed);
-  
-  
-  //text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 150);
-  
-  text(hElapsed+":"+mDisplay+":"+sDisplay, width/2, 150);
+  text(hElapsed+":"+mElapsed+":"+sElapsed, width/2, 150);
 }
