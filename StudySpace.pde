@@ -68,7 +68,7 @@ void setup() {
     tasks[i] = new Task();
   }
 
-  //Loading music 
+  //Loading audio
   classical = new SoundFile(this, "wavFiles/chopinNoc9.wav");
   lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
   brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
@@ -100,6 +100,7 @@ void draw() {
     if(extraSpace != true) 
       extraSpaceButton.setVisible(true); 
 
+    changeColourScheme();
     displayStopwatch();
     displayDate();
     updateProgressBar();
@@ -109,20 +110,21 @@ void draw() {
 
 void screenshot() {
   try {
-    screenshot = new PImage(new Robot().createScreenCapture(new Rectangle(displayWidth/4-10, displayHeight/10, 780, 660)));
+    screenshot = new PImage(new Robot().createScreenCapture(new Rectangle(displayWidth/3, displayHeight/10, 740, 640)));
     String day = "";
     String month = "";
     if (day()<10) day = "0"+str(day());
     else day = str(day());
     if (month()<10) month = "0"+str(month());
     else month = str(month());
+    day = "10";
     screenshot.save(dataPath("progress") + "/"+month+"."+day+"."+year()+".jpg");
   } catch (AWTException e) { }
 }
 
 void importFont(){
   try {
-      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\samri\\OneDrive\\Desktop\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
+      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\StudySpace-Dec11Update\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
       GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
       ge.registerFont(font1);
   } catch (IOException e) {
@@ -130,4 +132,50 @@ void importFont(){
   } catch(FontFormatException e) {
       e.printStackTrace();
   }
+}
+
+void changeColourScheme(){
+  if (darkMode) {
+    fill(50);
+    rect(0,0,width,height);
+    for(int i = 1; i <= 10; i++){
+      taskBoxes[i].setLocalColorScheme(255);
+    }
+    if(extraSpace){
+      for(int i = 11; i<=16;i++){
+        taskBoxes[i].setLocalColorScheme(255);
+      }
+    }
+    screenshotButton.setLocalColor(2,color(255));
+    mainScreen.setLocalColor(2,color(255));
+    playMusic.setLocalColor(2,color(255));
+    stopwatchBtn.setLocalColor(2,color(255));
+    clearButton.setLocalColor(2,color(255));
+    extraSpaceButton.setLocalColor(2,color(255));
+    addTaskButton.setLocalColor(2,color(255));
+  }
+  else {
+    fill(255);
+    rect(0, 0, width, height);
+    fill(themeColour);
+    noStroke();
+    rect(25,25,750,750,25,25,25,25);
+    for(int i = 1; i <= 10; i++){
+      taskBoxes[i].setLocalColor(2, color(0));
+    }
+    if(extraSpace){
+      for(int i = 11; i<=16;i++){
+        taskBoxes[i].setLocalColor(2, color(0));
+      }
+    }
+    textColour = color(0);
+    screenshotButton.setLocalColor(2,color(0));
+    mainScreen.setLocalColor(2,color(0));
+    playMusic.setLocalColor(2,color(0));
+    stopwatchBtn.setLocalColor(2,color(0));
+    clearButton.setLocalColor(2,color(0));
+    extraSpaceButton.setLocalColor(2,color(0));
+    addTaskButton.setLocalColor(2,color(0));
+  }
+  
 }
