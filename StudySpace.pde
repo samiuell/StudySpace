@@ -9,6 +9,8 @@ String screen = "";
 SoundFile classical; 
 SoundFile lofi; 
 SoundFile brownNoise; 
+SoundFile notify;
+
 String chosenSong;
 boolean musicPaused = false; 
 
@@ -72,6 +74,8 @@ void setup() {
   classical = new SoundFile(this, "wavFiles/chopinNoc9.wav");
   lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
   brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
+  notify = new SoundFile(this, "wavFiles/notification.wav"); 
+  //notify.play();
 }
 
 void draw() {
