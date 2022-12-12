@@ -64,6 +64,9 @@ void setup() {
   sElapsed = 0;
   mElapsed = 0;
   hElapsed = 0;
+  for (int i = studyBreak; i < 60; i += studyBreak) {
+    studyBreaks.add(i);
+  }
   
   //Adding initial tasks
   for(int i = 0; i < 17; i++) {
