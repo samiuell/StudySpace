@@ -334,7 +334,20 @@ public void studyBreakInput_change(GTextField source, GEvent event) { //_CODE_:s
 
 public void studyBreakBtn_click(GButton source, GEvent event) {
   studyBreak = int(studyBreakInput.getText());
-  //print(studyBreak);
+  studyBreaks = new ArrayList<Integer>();
+  
+  if (studyBreak > 0) {
+    if (studyBreak > 60) {
+      for (int i = 0; i <24*60; i+= studyBreak) {
+        studyBreaks.add(i);
+      }
+    }
+    else {
+      for (int i = 0; i < 60; i += studyBreak) {
+        studyBreaks.add(i);
+      }
+    }
+  }
 }
 
 // Create all the GUI controls. 
