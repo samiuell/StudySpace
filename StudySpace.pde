@@ -1,9 +1,7 @@
+//Import stuff 
 import processing.sound.*;
 import g4p_controls.*;
 import java.awt.*; 
-PImage screenshot;
-
-String screen = ""; 
 
 //Song files
 SoundFile classical; 
@@ -11,10 +9,13 @@ SoundFile lofi;
 SoundFile brownNoise; 
 SoundFile notify;
 
+//Global Variables
+PImage screenshot;
+String screen = ""; 
 String chosenSong;
 boolean musicPaused = false; 
 
-//display
+  //Display
 PImage logo; 
 Font font1;
 PFont font2;
@@ -28,11 +29,15 @@ color yellow = color(255, 255, 100);
 color themeColour = green;
 boolean darkMode = false;
 
+
 void setup() {
+  
+  //Font
   importFont();
   font2 = createFont("Lexend-Regular.ttf",25);
   textFont(font2);
   size(800,800);
+  
   //GUI
   createGUI();
  
@@ -53,14 +58,13 @@ void setup() {
   clearButton.setVisible(false); 
   screenshotButton.setVisible(false); 
   
+  //Quote screen 
   background(255);
-  
-  //Logo
   logo = loadImage("logo.png"); 
-
+  image(logo, 285, 50, 210, 200); 
   displayQuote(); 
   
-  //stopwatch
+  //Stopwatch
   sElapsed = 0;
   mElapsed = 0;
   hElapsed = 0;
@@ -78,14 +82,13 @@ void setup() {
   lofi = new SoundFile(this, "wavFiles/roseForBreakfast.wav"); 
   brownNoise = new SoundFile(this, "wavFiles/brownNoise.wav"); 
   notify = new SoundFile(this, "wavFiles/notification.wav"); 
-  //notify.play();
 }
 
+
 void draw() {
-  image(logo, 303, 50, 195, 200); 
   
-  //Main screen
   if(screen == "main") {
+    
     //GUI
     mainScreen.setVisible(false); 
     stopwatchBtn.setVisible(true); 
@@ -107,13 +110,26 @@ void draw() {
     if(extraSpace != true) 
       extraSpaceButton.setVisible(true); 
 
+    //Updating stuff 
     changeColourScheme();
     displayStopwatch();
     displayDate();
     updateProgressBar();
+    
+    //Logo
     image(logo, width/2-100, height/2-20, 195, 150); 
   }
 }
+
+
+//Other functions 
+
+void pauseMusic() {
+  classical.pause(); 
+  lofi.pause(); 
+  brownNoise.pause(); 
+}
+
 
 void screenshot() {
   try {
@@ -129,9 +145,10 @@ void screenshot() {
   } catch (AWTException e) { }
 }
 
+
 void importFont(){
   try {
-      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\lij8263\\Downloads\\StudySpace-Dec11Update\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
+      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\samri\\OneDrive\\Desktop\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
       GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
       ge.registerFont(font1);
   } catch (IOException e) {
@@ -140,6 +157,7 @@ void importFont(){
       e.printStackTrace();
   }
 }
+
 
 void changeColourScheme(){
   if (darkMode) {
