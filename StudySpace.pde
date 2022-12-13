@@ -155,7 +155,6 @@ void changeColourScheme(){
     }
     screenshotButton.setLocalColor(2,color(255));
     mainScreen.setLocalColor(2,color(255));
-    playMusic.setLocalColor(2,color(255));
     stopwatchBtn.setLocalColor(2,color(255));
     clearButton.setLocalColor(2,color(255));
     extraSpaceButton.setLocalColor(2,color(255));
