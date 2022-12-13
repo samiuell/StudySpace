@@ -60,12 +60,14 @@ void displayStopwatch() {
           if (sElapsed == 0) {
             fill(0);
             text("Study Break", width/2, 50);
+            notify.play();
           }
         }
       }
       else if (mElapsed == m && sElapsed == 0) {
         fill(0);
         text("Study Break", width/2, 50);
+        notify.play();
       }
     }   
   }
