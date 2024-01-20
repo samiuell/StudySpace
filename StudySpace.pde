@@ -33,7 +33,6 @@ boolean darkMode = false;
 void setup() {
   
   //Font
-  importFont();
   font2 = createFont("Lexend-Regular.ttf",25);
   textFont(font2);
   size(800,800);
@@ -145,18 +144,6 @@ void screenshot() {
   } catch (AWTException e) { }
 }
 
-
-void importFont(){
-  try {
-      font1 = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\samri\\OneDrive\\Desktop\\StudySpace\\data\\Lexend-Regular.ttf")).deriveFont(18f);
-      GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-      ge.registerFont(font1);
-  } catch (IOException e) {
-      e.printStackTrace();
-  } catch(FontFormatException e) {
-      e.printStackTrace();
-  }
-}
 
 
 void changeColourScheme(){
