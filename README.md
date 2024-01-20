@@ -25,7 +25,7 @@ In the pop-out window you will see a section in which you can choose from a vari
 ### Music 
 Our audio options (classical, lo-fi, and brown noise) are chosen specifically to be an aid to your studying and give those who require some audio stimulation to study a chance for success. You can choose which track to listen to from the pop-out window and pause/resume as you desire. 
 
-## Study Break Intervals 
+### Study Break Intervals 
 You can decided which intervals you'd like to recieve study breaks so that you can tailor your experience with this program to be best suited for your schedule. 
 
 
